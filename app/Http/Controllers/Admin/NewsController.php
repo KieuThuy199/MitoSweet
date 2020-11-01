@@ -21,15 +21,18 @@ class NewsController extends Controller
                 $news->title   = $request->title;
                 $news->summary = $request->summary;
                 $news->detail  = $request->detail;
-                if ($request->hasFile('imgnews')) {
-                    foreach($request->file('imgnews') as $img){
-                        $destinationPath = 'images/news'.'/';
-                        $extension = $img->getClientOriginalExtension(); // lấy đuôi ảnh
-                        $fileName = $news->title."-".date('his').".".$extension;
-                        $filename = $img->move($destinationPath, $fileName);
-                        $news->img = $filename;
-                    }
-                }
+                // if ($request->hasFile('imgnews')) {
+                //     foreach($request->file('imgnews') as $img){
+                //         $destinationPath = 'images/news'.'/';
+                //         $extension = $img->getClientOriginalExtension(); // lấy đuôi ảnh
+                //         $fileName = $news->title."-".date('his').".".$extension;
+                //         $filename = $img->move($destinationPath, $fileName);
+                //         $news->img = $filename;
+                //     }
+                // }
+                $img = $request->filepath;
+                $img = substr($img,16);
+                $news->img  = $img;
                 $news->save();
                 DB::commit();
                 return redirect('news.add');
@@ -49,16 +52,18 @@ class NewsController extends Controller
             $news->title   = $request->title;
             $news->summary = $request->summary;
             $news->detail  = $request->detail;
-            if ($request->hasFile('imgnews')) {
-                foreach($request->file('imgnews') as $img){
-                    $extension = $img->getClientOriginalExtension(); // lấy đuôi ảnh
-                    $fileName = $news->title."-".date('his').".".$extension;
-                    $destinationPath = 'images/news'.'/';
-                    $filename = $img->move($destinationPath, $fileName);
-                    $news->img = $filename;
-                }
-            }
-
+            // if ($request->hasFile('imgnews')) {
+            //     foreach($request->file('imgnews') as $img){
+            //         $extension = $img->getClientOriginalExtension(); // lấy đuôi ảnh
+            //         $fileName = $news->title."-".date('his').".".$extension;
+            //         $destinationPath = 'images/news'.'/';
+            //         $filename = $img->move($destinationPath, $fileName);
+            //         $news->img = $filename;
+            //     }
+            // }
+            $img = $request->filepath;
+            $img = substr($img,16);
+            $news->img  = $img;
             $news->save();
             return redirect('/news');
         }

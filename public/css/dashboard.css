@@ -326,7 +326,7 @@ ul.submenu{
 } */
 .box-preview-img {
     margin-top: 10px;
-    display: none;
+    /* display: none; */
 }
 .box-preview-img img {
     width: 80px;

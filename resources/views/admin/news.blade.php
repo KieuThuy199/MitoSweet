@@ -36,8 +36,17 @@
                 <div class="modal-body">
                     <form method="POST" action="news/add" class="change-form" enctype="multipart/form-data">
                         @csrf
-                        <input type="file" id="img" name="imgnews[]" onchange="previewImg(event)" accept="image/*" multiple required><br>
-                        <div class="box-preview-img"></div>
+                        {{-- <input type="file" id="img" name="imgnews[]" onchange="previewImg(event)" accept="image/*" multiple required><br> --}}
+                        {{-- <textarea id="summernote-editor" name="content">{!! old('content', $content ?? '') !!}</textarea> --}}
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                              <a id="btn-img" data-input="thumbnail" data-preview="preview-img" class="btn btn-outline-primary">
+                               Chọn tệp:
+                              </a>
+                            </span>
+                            <input id="thumbnail" class="form-control" type="text" name="filepath">
+                        </div>
+                        <div class="box-preview-img" id="preview-img"></div>
                         <label for="" class="control-label">@lang('modules.news.name')</label>
                         <input class="form-control" name="title" required>
                         <label for="" class="control-label">@lang('modules.news.summary')</label>
@@ -109,9 +118,18 @@
                             <div class="modal-body">
                                 <form method="POST" action="{{ url('news/edit') }}/{{$news->id}}" class="change-form" enctype="multipart/form-data">
                                     @csrf
-                                    <input type="file" name="imgnews[]" onchange="previewImg(event)" multiple><br>
-                                    <div class="box-preview-img"></div>
-                                    <div class="preview-img"><img src="{{$news->img}}"></div>
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                          <a id="btn-img" data-input="thumbnail" data-preview="preview-img" class="btn btn-outline-primary">
+                                           Chọn tệp:
+                                          </a>
+                                        </span>
+                                        <input id="thumbnail" class="form-control" type="text" name="filepath" value="{{$news->img}}">
+                                    </div>
+                                    <div class="box-preview-img" id="preview-img"><img src="{{$news->img}}"></div>
+                                    {{-- <input type="file" name="imgnews[]" onchange="previewImg(event)" multiple><br>
+                                    <div class="box-preview-img"></div> --}}
+                                    {{-- <div class="preview-img"><img src="{{$news->img}}"></div> --}}
                                     <label for="" class="control-label">@lang('modules.news.name')</label>
                                     <input class="form-control" value="{{$news->title}}" name="title" required>
                                     <label for="" class="control-label">@lang('modules.news.summary')</label>
@@ -137,5 +155,10 @@
 @push('scripts')
 
     <script type="text/javascript" src="..\js\main.js"></script>
-
+    <script type="text/javascript" src="..\js\upload.js"></script>
+    <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+    <script>
+        var route_prefix = "laravel-filemanager";
+        $('#btn-img').filemanager('image', {prefix: route_prefix});
+    </script>
 @endpush
