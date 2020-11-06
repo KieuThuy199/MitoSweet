@@ -28,14 +28,42 @@ $(document).ready(function(){
 
     // Initialize summernote with LFM button in the popover button group
     // Please note that you can add this button to any other button group you'd like
-    $('#summernote-editor').summernote({
-      toolbar: [
-        ['popovers', ['lfm']],
-      ],
-      buttons: {
-        lfm: LFMButton
-      }
-    })
-  });
+    $('.detail').summernote({
+        lang: 'vi-VN',
+        toolbar: [
+            // ['popovers', ['lfm']],
+            ['style', ['style']],
+            ['font', ['bold', 'italic', 'underline', 'clear']],
+            ['fontname', ['fontname']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']],
+        ],
+        height: 150,
+    //   buttons: {
+    //     lfm: LFMButton
+    //   }
+    });
+    $("textarea.edit-detail").summernote({
+        lang: 'vi-VN',
+        toolbar: [
+            // ['popovers', ['lfm']],
+            ['style', ['style']],
+            ['font', ['bold', 'italic', 'underline', 'clear']],
+            ['fontname', ['fontname']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']],
+        ],
+        height: 150,
+    });
+
+});
 
 

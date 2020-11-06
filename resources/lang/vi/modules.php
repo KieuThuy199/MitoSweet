@@ -93,6 +93,6 @@ return array (
         'order' => 'Banner Đặt bánh',
         'title' => 'Banner Tiêu đề',
         'decrip' => 'Banner Mô tả',
-
+        'search' => 'Tìm kiếm'
     ),
 );

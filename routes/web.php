@@ -24,17 +24,19 @@ Route::group(['namespace' => 'Admin', 'as' => 'news.'],
 
         Route::match(['get', 'post'],'news/add', 'NewsController@add');
         Route::match(['get', 'post'],'news/edit/{id}', 'NewsController@edit');
-        // Route::post('news/edit/{id}', 'NewsController@edit');
+
         Route::get('news/delete/{id}', 'NewsController@delete');
-        Route::get('news/delete', 'NewsController@deleteMul');
+        Route::get('news/deleteMul', 'NewsController@deleteMul');
+
+        Route::get('news/search', 'NewsController@search');
 });
 
-Route::get('news.add', function () {
-    return redirect('news')->with('status', 'Thêm tin tức thành công!');
-});
-Route::get('news.fail', function () {
-    return redirect('news')->with('fail', 'Không thêm được!');
-});
+// Route::get('news.add', function () {
+//     return redirect('news')->with('status', 'Thêm tin tức thành công!');
+// });
+// Route::get('news.fail', function () {
+//     return redirect('news')->with('fail', 'Không thêm được!');
+// });
 
 // Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
 //     \UniSharp\LaravelFilemanager\Lfm::routes();

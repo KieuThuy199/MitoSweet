@@ -6,13 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class NewsController extends Controller
 {
     public function data(){
-        $news = DB::table('news')->paginate(15);
-        return view('admin.news',['news' => $news]);
+        $news = DB::table('news')->paginate(5);
+        return view('admin.news',['new' => $news]);
     }
+
     public function add(Request $request){
         if($request->isMethod('post')){
             DB::beginTransaction();
@@ -31,56 +33,58 @@ class NewsController extends Controller
                 //     }
                 // }
                 $img = $request->filepath;
-                $img = substr($img,16);
+                $img = str_replace('http://localhost','', $img);;
                 $news->img  = $img;
                 $news->save();
                 DB::commit();
-                return redirect('news.add');
+                return redirect('news')->with('status', 'Thêm tin tức thành công!');
             }
             catch (\Exception $exception){
                 DB::rollBack();
-                return redirect('news.fail');
+                return redirect('news')->with('fail', 'Không thêm được!');
             }
         }
         return view('admin.news');
     }
+
     public function edit(Request $request, $id){
-        // $db_news = array();
         $news = News::find($id);
-        // $db_news['news'] = $news;
         if($request->isMethod('post')){
             $news->title   = $request->title;
             $news->summary = $request->summary;
             $news->detail  = $request->detail;
-            // if ($request->hasFile('imgnews')) {
-            //     foreach($request->file('imgnews') as $img){
-            //         $extension = $img->getClientOriginalExtension(); // lấy đuôi ảnh
-            //         $fileName = $news->title."-".date('his').".".$extension;
-            //         $destinationPath = 'images/news'.'/';
-            //         $filename = $img->move($destinationPath, $fileName);
-            //         $news->img = $filename;
-            //     }
-            // }
             $img = $request->filepath;
-            $img = substr($img,16);
+            $img = str_replace('http://localhost','', $img);;
             $news->img  = $img;
             $news->save();
-            return redirect('/news');
+            return redirect('news')->with('status', 'Sửa tin tức thành công!');
         }
-        return view('admin.news');
-        // return $db_news['news'];
+        return redirect('news');
     }
+
     public function delete($id){
         $news = News::find($id);
         $news->delete();
-        return redirect('news');
+        return redirect('news')->with('status', 'Xóa tin tức thành công!');
     }
+
     public function deleteMul(Request $request)
     {
-        $data = $request->all();
-        dd($data);
-        // foreach ($data['id'] as $id){
-        //     DB::table('news')->where('id', $id)->delete();
-        // }
+        if ($request->has('delete')){
+            $ids = $request->delete;
+            foreach($ids as $id){
+                News::where('id', $id)->delete();
+            }
+            return redirect('news')->with('status', 'Xóa thành công!');
+        }else{
+            return redirect('news')->with('fail', 'Không có tin tức được chọn!');
+        }
+    }
+
+    public function search(Request $request){
+        $news = News::where('title', 'like', '%' . $request->search . '%')
+                    ->orWhere('summary', 'like', '%' . $request->search . '%')
+                    ->get();
+        return view('admin.news',['new' => $news]);
     }
 }
