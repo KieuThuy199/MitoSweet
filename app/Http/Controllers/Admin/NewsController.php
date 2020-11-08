@@ -23,15 +23,6 @@ class NewsController extends Controller
                 $news->title   = $request->title;
                 $news->summary = $request->summary;
                 $news->detail  = $request->detail;
-                // if ($request->hasFile('imgnews')) {
-                //     foreach($request->file('imgnews') as $img){
-                //         $destinationPath = 'images/news'.'/';
-                //         $extension = $img->getClientOriginalExtension(); // lấy đuôi ảnh
-                //         $fileName = $news->title."-".date('his').".".$extension;
-                //         $filename = $img->move($destinationPath, $fileName);
-                //         $news->img = $filename;
-                //     }
-                // }
                 $img = $request->filepath;
                 $img = str_replace('http://localhost','', $img);;
                 $news->img  = $img;
@@ -70,21 +61,27 @@ class NewsController extends Controller
 
     public function deleteMul(Request $request)
     {
-        if ($request->has('delete')){
-            $ids = $request->delete;
-            foreach($ids as $id){
-                News::where('id', $id)->delete();
-            }
-            return redirect('news')->with('status', 'Xóa thành công!');
-        }else{
-            return redirect('news')->with('fail', 'Không có tin tức được chọn!');
+        $ids = $request->ids;
+        $ids = explode(',', $ids);
+        foreach($ids as $id){
+            News::where('id', $id)->delete();
         }
+        return response()->json(['status' => true,'message'=>"Xóa thành công!"]);
+        // if ($request->has('delete')){
+        //     $ids = $request->delete;
+        //     foreach($ids as $id){
+        //         News::where('id', $id)->delete();
+        //     }
+        //     return redirect('news')->with('status', 'Xóa thành công!');
+        // }else{
+        //     return redirect('news')->with('fail', 'Không có tin tức được chọn!');
+        // }
     }
 
     public function search(Request $request){
         $news = News::where('title', 'like', '%' . $request->search . '%')
                     ->orWhere('summary', 'like', '%' . $request->search . '%')
-                    ->get();
+                    ->paginate(5);
         return view('admin.news',['new' => $news]);
     }
 }

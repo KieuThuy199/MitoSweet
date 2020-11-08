@@ -5,8 +5,8 @@
 @section('header-body')
     <div class="row" style="margin: 0;">
         <div class="breadcrumb-admin">
-            <i class="far fa-newspaper"></i>
-            @lang('modules.dashboard.menu.news')
+            <i class="fas fa-video"></i>
+            @lang('modules.dashboard.menu.freetutorial')
         </div>
         <div class="btn-group-sm btn-func">
             <button type="button" class="btn btn-dark reload">
@@ -34,23 +34,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="news/add" class="change-form" enctype="multipart/form-data">
+                    <form method="POST" action="freetutorials/add" class="change-form" enctype="multipart/form-data">
                         @csrf
-                        <div class="input-group">
-                            <span class="input-group-btn">
-                              <a id="btn-img" data-input="thumbnail" data-preview="box-preview-img" class="btn btn-outline-primary">
-                               Chọn tệp:
-                              </a>
-                            </span>
-                            <input class="form-control thumbnail" type="text" name="filepath">
-                        </div>
-                        <div class="box-preview-img"></div>
-                        <label for="" class="control-label">@lang('modules.news.name')</label>
+                        <label for="" class="control-label">@lang('modules.freetutorials.name')</label>
                         <input class="form-control" name="title" required>
-                        <label for="" class="control-label">@lang('modules.news.summary')</label>
-                        <input class="form-control" name="summary" required>
-                        <label for="" class="control-label">@lang('modules.news.content')</label>
-                        <textarea class="detail" name="detail">{!! old('detail', $detail ?? '') !!}</textarea>
+                        <label for="" class="control-label">@lang('modules.freetutorials.video')</label>
+                        <input class="form-control" name="video" required>
                         <button class="btn-change">@lang('modules.changeinfor.confirm')</button>
                         <button class="btn-back" data-dismiss="modal">@lang('modules.back')</button>
                     </form>
@@ -77,7 +66,7 @@
 @endif
 {{-- Search --}}
 <div class="search-form d-none">
-    <form action="{{ url('news/search') }}" method="post">
+    <form action="{{ url('freetutorials/search') }}" method="post">
         @csrf
         <input class="form-control w-25 d-inline" name="search" placeholder="Nhập từ khóa...">
         <button class="btn-search" type="submit">
@@ -85,50 +74,46 @@
         </button>
     </form>
 </div>
-{{-- <form action="{{ url('news/deleteMul') }}" method="get">
+{{-- <form action="{{ url('freetutorials/deleteMul') }}" method="get">
     @csrf --}}
 {{-- Xóa nhiều--}}
 <div class="btn-group-sm btn-gr d-none">
     <input type="checkbox" id="checkAll">
-    <button type="submit" class="btn btn-danger btn-del">
+    <button type="submit" class="btn btn-danger btn-free">
         <i class="fas fa-trash-alt"></i>
     </button>
 </div>
 {{-- </form> --}}
 <div class="table-responsive">
-    <table class="table table-bordered text-center"  id="data_news">
+    <table class="table table-bordered text-center"  id="data_freetutorials">
         <thead>
         <tr>
             <th scope="col" class="btn-gr d-none">#</th>
-            <th scope="col">Hình ảnh</th>
-            <th scope="col">Tên tin tức</th>
-            <th scope="col">Tóm tắt</th>
-            {{-- <th scope="col">Nội dung</th> --}}
+            <th scope="col">Tiêu đề</th>
+            <th scope="col">Video</th>
             <th scope="col">Thời gian tạo</th>
             <th scope="col">Chức năng</th>
         </tr>
         </thead>
         <tbody>
-            @foreach ($new as $news)
+            @foreach ($freetutorial as $freetutorials)
             <tr>
-                <td class="btn-gr d-none"><input type="checkbox" class="check" name="delete[]" value="{{ $news->id }}"></td>
-                <td><img src="{{ $news->img }}" class="preview-img"></td>
-                <td>{{ $news->title }}</td>
-                <td>{{ $news->summary }}</td>
-                <td>{{ $news->created_at }}</td>
-                {{-- <td class="compact">{{ $news->detail }}</td> --}}
+                <td class="btn-gr d-none"><input type="checkbox" class="check" name="delete[]" value="{{ $freetutorials->id }}"></td>
+                <td>{{ $freetutorials->title }}</td>
+                <td>{{ $freetutorials->video }}</td>
+                <td>{{ $freetutorials->created_at }}</td>
                 <td>
                     <div class="btn-group-sm btn-func">
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$news->id}}">
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$freetutorials->id}}">
                             <span class="fas fa-edit"></span>
                         </button>
-                        <a href="{{ url('news/delete') }}/{{$news->id}}" class="btn btn-primary" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">
+                        <a href="{{ url('freetutorials/delete') }}/{{$freetutorials->id}}" class="btn btn-primary" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">
                             <span class="fas fa-trash-alt"></span>
                         </a>
                     </div>
                 </td>
                 {{-- form edit --}}
-                <div class="modal fade" id="editModal{{$news->id}}">
+                <div class="modal fade" id="editModal{{$freetutorials->id}}">
                     <div class="modal-dialog modal-xl modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -138,24 +123,13 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form method="POST" action="{{ url('news/edit') }}/{{$news->id}}" class="change-form" enctype="multipart/form-data">
+                                <form method="POST" action="{{ url('freetutorials/edit') }}/{{$freetutorials->id}}" class="change-form" enctype="multipart/form-data">
                                     @csrf
-                                    <div class="input-group">
-                                        <span class="input-group-btn">
-                                            <a id="btn-edit-img" data-input="thumbnail-edit" data-preview="edit-img" class="btn btn-outline-primary">
-                                            Chọn tệp:
-                                            </a>
-                                        </span>
-                                        {{-- <input class="form-control thumbnail-edit" type="text" name="filepath" value="{!! old('img', $news->img) !!}"> --}}
-                                        <input class="form-control thumbnail-edit" type="text" name="filepath" value="{{ $news->img }}">
-                                    </div>
-                                    <div class="box-preview-img edit-img"><img src="{{ $news->img }}"></div>
-                                    <label for="" class="control-label">@lang('modules.news.name')</label>
-                                    <input class="form-control" value="{{$news->title}}" name="title" required>
-                                    <label for="" class="control-label">@lang('modules.news.summary')</label>
-                                    <input class="form-control" value="{{$news->summary}}" name="summary" required>
-                                    <label for="" class="control-label">@lang('modules.news.content')</label>
-                                    <textarea class="edit-detail" name="detail">{!! old('detail', $news->detail) !!}</textarea>
+                                    <label for="" class="control-label">@lang('modules.freetutorials.name')</label>
+                                    <input class="form-control" value="{{$freetutorials->title}}" name="title" required>
+                                    <label for="" class="control-label">@lang('modules.freetutorials.video')</label>
+                                    <input class="form-control" value="{{$freetutorials->video}}" name="video" required>
+
                                     <button class="btn-change">@lang('modules.changeinfor.confirm')</button>
                                     <button class="btn-back" data-dismiss="modal">@lang('modules.back')</button>
                                 </form>
@@ -168,7 +142,7 @@
             @endforeach
         </tbody>
     </table>
-    {{$new->links('admin.layout.pagination')}}
+    {{$freetutorial->links('admin.layout.pagination')}}
 </div>
 
 
@@ -179,10 +153,5 @@
 
     <script type="text/javascript" src="..\js\main.js"></script>
     <script type="text/javascript" src="..\js\upload.js"></script>
-    <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
-    <script>
-        var route_prefix = "laravel-filemanager";
-        $('#btn-img').filemanager('image', {prefix: route_prefix});
-        $('a#btn-edit-img').filemanager('image', {prefix: route_prefix});
-    </script>
+    {{-- <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script> --}}
 @endpush

@@ -2,7 +2,6 @@
 // function previewImg(event) {
 //     // Gán giá trị các file vào biến files
 //     var files = document.getElementById('img').files;
-
 //     // Show khung chứa ảnh xem trước
 //     $('.change-form .box-preview-img').show();
 
@@ -31,6 +30,10 @@ function openModal(){
     $('#addModal').modal('show');
 }
 
+$('.reload').click(function() {
+    location.reload();
+})
+
 $('.btn-del-show').click(function(){
     if ($('.btn-gr').hasClass('d-none')){
         $('.btn-gr').removeClass('d-none');
@@ -38,6 +41,7 @@ $('.btn-del-show').click(function(){
         $('.btn-gr').addClass('d-none');
     }
 })
+
 $('.btn-search-show').click(function(){
     if ($('.search-form').hasClass('d-none')){
         $('.search-form').removeClass('d-none');
@@ -49,3 +53,57 @@ $('.btn-search-show').click(function(){
 $("#checkAll").click(function () {
     $(".check").not(this).prop('checked', this.checked);
 });
+
+$('.btn-del').click(function(){
+    let id = [];
+    let a = confirm('Ban có chắc chắn muốn xóa những tin tức này?');
+    if (a == true) {
+        $(".check:checked").each(function() {
+            id.push($(this).val());
+        })
+        if(id.length > 0){
+            $.ajax({
+                url: '/news/deleteMul',
+                type: 'get',
+                data: 'ids=' + id,
+                success: function (data) {
+                    if (data['status'] == true) {
+                        $(".check:checked").each(function() {
+                            $(this).parents("tr").remove();
+                        });
+                        alert(data['message']);
+                    }
+                }
+            });
+        }else{
+            alert('Không có tin tức được chọn!');
+        }
+    }
+})
+
+$('.btn-free').click(function(){
+    let id = [];
+    let a = confirm('Ban có chắc chắn muốn xóa những tin tức này?');
+    if (a == true) {
+        $(".check:checked").each(function() {
+            id.push($(this).val());
+        })
+        if(id.length > 0){
+            $.ajax({
+                url: '/freetutorials/deleteMul',
+                type: 'get',
+                data: 'ids=' + id,
+                success: function (data) {
+                    if (data['status'] == true) {
+                        $(".check:checked").each(function() {
+                            $(this).parents("tr").remove();
+                        });
+                        alert(data['message']);
+                    }
+                }
+            });
+        }else{
+            alert('Không có tin tức được chọn!');
+        }
+    }
+})

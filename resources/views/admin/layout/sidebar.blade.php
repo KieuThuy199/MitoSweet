@@ -48,7 +48,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ url('freetutorials')}}">
                 <i class="fas fa-video"></i>
                 @lang('modules.dashboard.menu.freetutorial')
             </a>

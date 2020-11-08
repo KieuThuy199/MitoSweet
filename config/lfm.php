@@ -72,6 +72,20 @@ return [
                 'text/plain',
             ],
         ],
+        'video' => [
+            'folder_name'  => 'videos',
+            'startup_view' => 'list',
+            'max_size'     =>  15728640, // size in KB
+            'valid_mime'   => [
+                'video/mp4',
+                'video/avi',
+                'video/mpeg-4',
+                'video/gif',
+                'video/wmv',
+                'application/pdf',
+                'text/plain',
+            ],
+        ],
     ],
 
     /*

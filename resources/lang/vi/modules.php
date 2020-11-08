@@ -83,9 +83,13 @@ return array (
     'back' => 'Trở về',
     'news' => array(
         'img' => 'Hình ảnh',
-        'name' => 'Tên',
+        'name' => 'Tiêu đề',
         'summary' => 'Tóm tắt',
         'content' => 'Nội dung',
+    ),
+    'freetutorials' => array(
+        'video' => 'Video',
+        'name' => 'Tiêu đề',
     ),
     'web' => array(
         'online' => 'Banner Khóa học trực tuyến',

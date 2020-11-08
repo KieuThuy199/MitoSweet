@@ -28,9 +28,21 @@ Route::group(['namespace' => 'Admin', 'as' => 'news.'],
         Route::get('news/delete/{id}', 'NewsController@delete');
         Route::get('news/deleteMul', 'NewsController@deleteMul');
 
-        Route::get('news/search', 'NewsController@search');
+        Route::post('news/search', 'NewsController@search');
 });
 
+Route::group(['namespace' => 'Admin', 'as' => 'freetutorials.'],
+    function () {
+        Route::get('freetutorials', 'FreeTutorialsController@data');
+
+        Route::match(['get', 'post'],'freetutorials/add', 'FreeTutorialsController@add');
+        Route::match(['get', 'post'],'freetutorials/edit/{id}', 'FreeTutorialsController@edit');
+
+        Route::get('freetutorials/delete/{id}', 'FreeTutorialsController@delete');
+        Route::get('freetutorials/deleteMul', 'FreeTutorialsController@deleteMul');
+
+        Route::post('freetutorials/search', 'FreeTutorialsController@search');
+});
 // Route::get('news.add', function () {
 //     return redirect('news')->with('status', 'Thêm tin tức thành công!');
 // });
