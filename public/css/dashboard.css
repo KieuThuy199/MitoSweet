@@ -224,7 +224,7 @@ ul.submenu{
 .change-form .control-label{
     font-weight: 600;
 }
-.change-form .control-label:after {
+.change-form .required.control-label:after {
     content:"*";
     color:red;
   }
@@ -372,20 +372,4 @@ input[type=checkbox]#checkAll:checked:after {
 .pagination{
     margin-top: 10px !important;
     margin-bottom: 0px !important;
-}
-.search-form{
-    margin: -10px 0 15px;
-}
-.btn-search{
-    border-radius: 5px;
-    background-color: #ffd1dc;
-    color: #2e1503;
-    border: 1px solid #2e1503;
-    width: 37px;
-    height: 37px;
-}
-.btn-search:hover{
-    background-color: #2e1503;
-    color: #ffd1dc;
-    border: 1px solid #ffd1dc;
 }

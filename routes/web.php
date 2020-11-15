@@ -17,38 +17,44 @@ Route::get('/', function () {
     return view('admin.index');
 });
 
-Route::group(['namespace' => 'Admin', 'as' => 'news.'],
+Route::group(['namespace' => 'Admin'],
     function () {
+        // News
         Route::get('news', 'NewsController@data');
-        // Route::get('news-data', ['as' => 'news.data', 'uses' => 'NewsController@data']);
-
         Route::match(['get', 'post'],'news/add', 'NewsController@add');
         Route::match(['get', 'post'],'news/edit/{id}', 'NewsController@edit');
-
         Route::get('news/delete/{id}', 'NewsController@delete');
         Route::get('news/deleteMul', 'NewsController@deleteMul');
-
         Route::post('news/search', 'NewsController@search');
-});
 
-Route::group(['namespace' => 'Admin', 'as' => 'freetutorials.'],
-    function () {
+        // Freetutorials
         Route::get('freetutorials', 'FreeTutorialsController@data');
-
         Route::match(['get', 'post'],'freetutorials/add', 'FreeTutorialsController@add');
         Route::match(['get', 'post'],'freetutorials/edit/{id}', 'FreeTutorialsController@edit');
-
         Route::get('freetutorials/delete/{id}', 'FreeTutorialsController@delete');
         Route::get('freetutorials/deleteMul', 'FreeTutorialsController@deleteMul');
-
         Route::post('freetutorials/search', 'FreeTutorialsController@search');
+
+        // Course
+        Route::prefix('course')->group(function () {
+            Route::get('levels', 'CourseLevelsController@data');
+            Route::match(['get', 'post'],'levels/add', 'CourseLevelsController@add');
+            Route::match(['get', 'post'],'levels/edit/{id}', 'CourseLevelsController@edit');
+            Route::get('levels/delete/{id}', 'CourseLevelsController@delete');
+            Route::get('levels/deleteMul', 'CourseLevelsController@deleteMul');
+            Route::post('levels/search', 'CourseLevelsController@search');
+            Route::get('levels/select', 'CourseLevelsController@select');
+
+            Route::get('online', 'OnlineCoursesController@data');
+            // Route::match(['get', 'post'],'levels/add', 'CourseLevelsController@add');
+            // Route::match(['get', 'post'],'levels/edit/{id}', 'CourseLevelsController@edit');
+            // Route::get('levels/delete/{id}', 'CourseLevelsController@delete');
+            // Route::get('levels/deleteMul', 'CourseLevelsController@deleteMul');
+            // Route::post('levels/search', 'CourseLevelsController@search');
+        });
+
 });
-// Route::get('news.add', function () {
-//     return redirect('news')->with('status', 'Thêm tin tức thành công!');
-// });
-// Route::get('news.fail', function () {
-//     return redirect('news')->with('fail', 'Không thêm được!');
-// });
+
 
 // Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
 //     \UniSharp\LaravelFilemanager\Lfm::routes();

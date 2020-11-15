@@ -1,13 +1,14 @@
 @extends('admin.layout.main')
 {{-- @push('css')
+
 @endpush --}}
 
 @section('header-body')
     <div class="row">
         <div class="col-lg-9">
             <div class="breadcrumb-admin d-inline">
-                <i class="far fa-newspaper"></i>
-                @lang('modules.dashboard.menu.news')
+                <i class="fas fa-graduation-cap"></i>
+                @lang('modules.dashboard.menu.class.online')
             </div>
             <div class="btn-group-sm btn-func d-inline">
                 <button type="button" class="btn btn-dark reload">
@@ -25,6 +26,7 @@
             <input class="form-control d-inline" name="search" id="search" placeholder="Tìm kiếm...">
         </div>
     </div>
+
     {{-- form add --}}
     <div class="modal fade" id="addModal">
         <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -36,7 +38,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="news/add" class="change-form" enctype="multipart/form-data">
+                    <form method="POST" action="online/add" class="change-form" enctype="multipart/form-data">
                         @csrf
                         <div class="input-group">
                             <span class="input-group-btn">
@@ -47,12 +49,25 @@
                             <input class="form-control thumbnail" type="text" name="filepath">
                         </div>
                         <div class="box-preview-img"></div>
-                        <label for="" class="required control-label">@lang('modules.news.name')</label>
+                        <label for="" class="required control-label">@lang('modules.online.name')</label>
                         <input class="form-control" name="title" required>
-                        <label for="" class="required control-label">@lang('modules.news.summary')</label>
+                        <label for="" class="required control-label">@lang('modules.online.summary')</label>
                         <input class="form-control" name="summary" required>
-                        <label for="" class="required control-label">@lang('modules.news.content')</label>
+                        <label for="" class="required control-label">@lang('modules.online.content')</label>
                         <textarea class="detail" name="detail">{!! old('detail', $detail ?? '') !!}</textarea>
+                        <label for="" class="required control-label">@lang('modules.online.level')</label>
+                        <select class="js-level form-control" name="level" id="level"></select>
+                        {{-- <input class="form-control" name="level" required> --}}
+                        <label for="" class="required control-label">@lang('modules.online.price')</label>
+                        <input class="form-control" name="price" required>
+                        <label for="" class="control-label">@lang('modules.online.promo_price')</label>
+                        <input class="form-control" name="promo">
+                        <label for="" class="required control-label">@lang('modules.online.lesson')</label>
+                        <input class="form-control" name="lesson" required>
+                        <label for="" class="required control-label">@lang('modules.online.trailer')</label>
+                        <input class="form-control" name="trailer" required>
+                        <label for="" class="required control-label">@lang('modules.online.video')</label>
+                        <input class="form-control" name="video" required>
                         <button class="btn-change">@lang('modules.changeinfor.confirm')</button>
                         <button class="btn-back" data-dismiss="modal">@lang('modules.back')</button>
                     </form>
@@ -92,34 +107,36 @@
         <tr>
             <th scope="col" class="btn-gr d-none">#</th>
             <th scope="col">Hình ảnh</th>
-            <th scope="col">Tên tin tức</th>
-            <th scope="col">Tóm tắt</th>
-            {{-- <th scope="col">Nội dung</th> --}}
+            <th scope="col">Tên khóa học</th>
+            <th scope="col">Cấp độ</th>
+            <th scope="col">Số bài học</th>
+            <th scope="col">Giá</th>
             <th scope="col">Thời gian tạo</th>
             <th scope="col">Chức năng</th>
         </tr>
         </thead>
         <tbody id="search-body">
-            @foreach ($new as $news)
+            @foreach ($course as $courses)
             <tr>
-                <td class="btn-gr d-none"><input type="checkbox" class="check" name="delete[]" value="{{ $news->id }}"></td>
-                <td><img src="{{ $news->img }}" class="preview-img"></td>
-                <td>{{ $news->title }}</td>
-                <td>{{ $news->summary }}</td>
-                <td>{{ $news->created_at }}</td>
-                {{-- <td class="compact">{{ $news->detail }}</td> --}}
+                <td class="btn-gr d-none"><input type="checkbox" class="check" name="delete[]" value="{{ $courses->id }}"></td>
+                <td><img src="{{ $courses->img }}" class="preview-img"></td>
+                <td>{{ $courses->title }}</td>
+                <td>{{ $courses->level }}</td>
+                <td>{{ $courses->lesson }}</td>
+                <td>{{ $courses->price }}</td>
+                <td>{{ $courses->created_at }}</td>
                 <td>
                     <div class="btn-group-sm btn-func">
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$news->id}}">
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$courses->id}}">
                             <span class="fas fa-edit"></span>
                         </button>
-                        <a href="{{ url('news/delete') }}/{{$news->id}}" class="btn btn-primary" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">
+                        <a href="{{ url('online/delete') }}/{{$courses->id}}" class="btn btn-primary" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">
                             <span class="fas fa-trash-alt"></span>
                         </a>
                     </div>
                 </td>
                 {{-- form edit --}}
-                <div class="modal fade" id="editModal{{$news->id}}">
+                <div class="modal fade" id="editModal{{$courses->id}}">
                     <div class="modal-dialog modal-xl modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -129,7 +146,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form method="POST" action="{{ url('news/edit') }}/{{$news->id}}" class="change-form" enctype="multipart/form-data">
+                                <form method="POST" action="{{ url('online/edit') }}/{{$courses->id}}" class="change-form" enctype="multipart/form-data">
                                     @csrf
                                     <div class="input-group">
                                         <span class="input-group-btn">
@@ -137,16 +154,16 @@
                                             Chọn tệp:
                                             </a>
                                         </span>
-                                        {{-- <input class="form-control thumbnail-edit" type="text" name="filepath" value="{!! old('img', $news->img) !!}"> --}}
-                                        <input class="form-control thumbnail-edit" type="text" name="filepath" value="{{ $news->img }}">
+                                        {{-- <input class="form-control thumbnail-edit" type="text" name="filepath" value="{!! old('img', $courses->img) !!}"> --}}
+                                        <input class="form-control thumbnail-edit" type="text" name="filepath" value="{{ $courses->img }}">
                                     </div>
-                                    <div class="box-preview-img edit-img"><img src="{{ $news->img }}"></div>
-                                    <label for="" class="required control-label">@lang('modules.news.name')</label>
-                                    <input class="form-control" value="{{$news->title}}" name="title" required>
-                                    <label for="" class="required control-label">@lang('modules.news.summary')</label>
-                                    <input class="form-control" value="{{$news->summary}}" name="summary" required>
-                                    <label for="" class="required control-label">@lang('modules.news.content')</label>
-                                    <textarea class="edit-detail" name="detail">{!! old('detail', $news->detail) !!}</textarea>
+                                    <div class="box-preview-img edit-img"><img src="{{ $courses->img }}"></div>
+                                    <label for="" class="required control-label">@lang('modules.courses.name')</label>
+                                    <input class="form-control" value="{{$courses->title}}" name="title" required>
+                                    <label for="" class="required control-label">@lang('modules.courses.summary')</label>
+                                    <input class="form-control" value="{{$courses->summary}}" name="summary" required>
+                                    <label for="" class="required control-label">@lang('modules.courses.content')</label>
+                                    <textarea class="edit-detail" name="detail">{!! old('detail', $courses->detail) !!}</textarea>
                                     <button class="btn-change">@lang('modules.changeinfor.confirm')</button>
                                     <button class="btn-back" data-dismiss="modal">@lang('modules.back')</button>
                                 </form>
@@ -159,7 +176,7 @@
             @endforeach
         </tbody>
     </table>
-    {{$new->links('admin.layout.pagination')}}
+    {{$course->links('admin.layout.pagination')}}
 </div>
 
 
@@ -176,4 +193,16 @@
         $('#btn-img').filemanager('image', {prefix: route_prefix});
         $('a#btn-edit-img').filemanager('image', {prefix: route_prefix});
     </script>
+    <script>
+        $(function () {
+            $.ajax({
+                url: 'levels/select',
+                    type: 'get',
+                    success: function(data){
+                        $('#level').html(data);
+                    }
+            });
+        });
+    </script>
+
 @endpush

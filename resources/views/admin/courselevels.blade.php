@@ -6,8 +6,8 @@
     <div class="row">
         <div class="col-lg-9">
             <div class="breadcrumb-admin d-inline">
-                <i class="fas fa-video"></i>
-                @lang('modules.dashboard.menu.freetutorial')
+                <i class="fas fa-level-up-alt"></i>
+                @lang('modules.dashboard.menu.class.level')
             </div>
             <div class="btn-group-sm btn-func d-inline">
                 <button type="button" class="btn btn-dark reload">
@@ -37,12 +37,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="freetutorials/add" class="change-form" enctype="multipart/form-data">
+                    <form method="POST" action="levels/add" class="change-form" enctype="multipart/form-data">
                         @csrf
-                        <label for="" class="required control-label">@lang('modules.freetutorials.name')</label>
+                        <label for="" class="required control-label">@lang('modules.levels.name')</label>
                         <input class="form-control" name="title" required>
-                        <label for="" class="required control-label">@lang('modules.freetutorials.video')</label>
-                        <input class="form-control" name="video" required>
                         <button class="btn-change">@lang('modules.changeinfor.confirm')</button>
                         <button class="btn-back" data-dismiss="modal">@lang('modules.back')</button>
                     </form>
@@ -77,35 +75,33 @@
 </div>
 
 <div class="table-responsive">
-    <table class="table table-bordered text-center"  id="data_freetutorials">
+    <table class="table table-bordered text-center"  id="data_levels">
         <thead>
         <tr>
             <th scope="col" class="btn-gr d-none">#</th>
             <th scope="col">Tiêu đề</th>
-            <th scope="col">Video</th>
             <th scope="col">Thời gian tạo</th>
             <th scope="col">Chức năng</th>
         </tr>
         </thead>
         <tbody id="search-body">
-            @foreach ($freetutorial as $freetutorials)
+            @foreach ($level as $levels)
             <tr>
-                <td class="btn-gr d-none"><input type="checkbox" class="check" name="delete[]" value="{{ $freetutorials->id }}"></td>
-                <td>{{ $freetutorials->title }}</td>
-                <td>{{ $freetutorials->video }}</td>
-                <td>{{ $freetutorials->created_at }}</td>
+                <td class="btn-gr d-none"><input type="checkbox" class="check" name="delete[]" value="{{ $levels->id }}"></td>
+                <td>{{ $levels->title }}</td>
+                <td>{{ $levels->created_at }}</td>
                 <td>
                     <div class="btn-group-sm btn-func">
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$freetutorials->id}}">
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$levels->id}}">
                             <span class="fas fa-edit"></span>
                         </button>
-                        <a href="{{ url('freetutorials/delete') }}/{{$freetutorials->id}}" class="btn btn-primary" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">
+                        <a href="levels/delete/{{$levels->id}}" class="btn btn-primary" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">
                             <span class="fas fa-trash-alt"></span>
                         </a>
                     </div>
                 </td>
                 {{-- form edit --}}
-                <div class="modal fade" id="editModal{{$freetutorials->id}}">
+                <div class="modal fade" id="editModal{{$levels->id}}">
                     <div class="modal-dialog modal-xl modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -115,12 +111,10 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form method="POST" action="{{ url('freetutorials/edit') }}/{{$freetutorials->id}}" class="change-form" enctype="multipart/form-data">
+                                <form method="POST" action="levels/edit/{{$levels->id}}" class="change-form" enctype="multipart/form-data">
                                     @csrf
-                                    <label for="" class="required control-label">@lang('modules.freetutorials.name')</label>
-                                    <input class="form-control" value="{{$freetutorials->title}}" name="title" required>
-                                    <label for="" class="required control-label">@lang('modules.freetutorials.video')</label>
-                                    <input class="form-control" value="{{$freetutorials->video}}" name="video" required>
+                                    <label for="" class="required control-label">@lang('modules.levels.name')</label>
+                                    <input class="form-control" value="{{$levels->title}}" name="title" required>
 
                                     <button class="btn-change">@lang('modules.changeinfor.confirm')</button>
                                     <button class="btn-back" data-dismiss="modal">@lang('modules.back')</button>
@@ -134,7 +128,7 @@
             @endforeach
         </tbody>
     </table>
-    {{$freetutorial->links('admin.layout.pagination')}}
+    {{$level->links('admin.layout.pagination')}}
 </div>
 
 
@@ -145,5 +139,4 @@
 
     <script type="text/javascript" src="..\js\main.js"></script>
     <script type="text/javascript" src="..\js\upload.js"></script>
-    {{-- <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script> --}}
 @endpush

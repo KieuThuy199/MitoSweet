@@ -78,10 +78,10 @@ class NewsController extends Controller
         // }
     }
 
-    public function search(Request $request){
-        $news = News::where('title', 'like', '%' . $request->search . '%')
-                    ->orWhere('summary', 'like', '%' . $request->search . '%')
-                    ->paginate(5);
-        return view('admin.news',['new' => $news]);
-    }
+    // public function search(Request $request){
+    //     $news = News::where('title', 'like', '%' . $request->search . '%')
+    //                 ->orWhere('summary', 'like', '%' . $request->search . '%')
+    //                 ->paginate(5);
+    //     return view('admin.news',['new' => $news]);
+    // }
 }

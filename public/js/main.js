@@ -42,14 +42,6 @@ $('.btn-del-show').click(function(){
     }
 })
 
-$('.btn-search-show').click(function(){
-    if ($('.search-form').hasClass('d-none')){
-        $('.search-form').removeClass('d-none');
-    }else{
-        $('.search-form').addClass('d-none');
-    }
-})
-
 $("#checkAll").click(function () {
     $(".check").not(this).prop('checked', this.checked);
 });
@@ -107,3 +99,12 @@ $('.btn-free').click(function(){
         }
     }
 })
+
+$("#search").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#search-body tr").filter(function() {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+});
+
+
