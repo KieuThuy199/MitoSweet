@@ -1,20 +1,3 @@
-// // Xem hình ảnh trước khi upload
-// function previewImg(event) {
-//     // Gán giá trị các file vào biến files
-//     var files = document.getElementById('img').files;
-//     // Show khung chứa ảnh xem trước
-//     $('.change-form .box-preview-img').show();
-
-//     // Dùng vòng lặp for để thêm các thẻ img vào khung chứa ảnh xem trước
-//     for (i = 0; i < files.length; i++)
-//     {
-//         // Thêm thẻ img theo i
-//         $('.change-form .box-preview-img').append('<img src="" id="' + i +'">');
-
-//         // Thêm src vào mỗi thẻ img theo id = i
-//         $('.change-form .box-preview-img img:eq('+i+')').attr('src', URL.createObjectURL(event.target.files[i]));
-//     }
-// }
 // Giới hạn chuỗi nội dung hiện ra màn hình
 $('.compact').each(function (f) {
     var newstr = $(this).text();
@@ -26,14 +9,17 @@ $('.compact').each(function (f) {
     }
 });
 
+//popup
 function openModal(){
     $('#addModal').modal('show');
 }
 
+// load page
 $('.reload').click(function() {
     location.reload();
 })
 
+// show xóa nhiều trường
 $('.btn-del-show').click(function(){
     if ($('.btn-gr').hasClass('d-none')){
         $('.btn-gr').removeClass('d-none');
@@ -42,10 +28,12 @@ $('.btn-del-show').click(function(){
     }
 })
 
+// chọn nhiều trg để xóa
 $("#checkAll").click(function () {
     $(".check").not(this).prop('checked', this.checked);
 });
 
+// truyền id để xóa nhiều (Tin tức)
 $('.btn-del').click(function(){
     let id = [];
     let a = confirm('Ban có chắc chắn muốn xóa những tin tức này?');
@@ -73,6 +61,7 @@ $('.btn-del').click(function(){
     }
 })
 
+// truyền id để xóa nhiều (hướng dẫn)
 $('.btn-free').click(function(){
     let id = [];
     let a = confirm('Ban có chắc chắn muốn xóa những tin tức này?');
@@ -100,6 +89,7 @@ $('.btn-free').click(function(){
     }
 })
 
+// search
 $("#search").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#search-body tr").filter(function() {
@@ -107,4 +97,16 @@ $("#search").on("keyup", function() {
     });
 });
 
-
+// thêm video
+$('.add-video').click(function(){
+    let a ='';
+    a += `  <div class="add-video">
+                <input class="form-control" name="name-video" placeholder="Tên video...">
+                <textarea class="form-control" name="video" placeholder="Đường link video..."></textarea>
+                <a class="deletevideo" style="color:2e1503; cursor: pointer;" onclick="remove()">Xóa</a>
+            </div>`;
+    $('.form-add-video').append(a);
+})
+function remove(){
+    $('.add-video').remove();
+}

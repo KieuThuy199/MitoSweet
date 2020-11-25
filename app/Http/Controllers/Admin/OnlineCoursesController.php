@@ -10,6 +10,6 @@ class OnlineCoursesController extends Controller
 {
     public function data(){
         $course = DB::table('online_courses')->paginate(5);
-        return view('admin.onlinecourses',['course' => $course]);
+        return view('admin.onlinecourses',['online' => $course]);
     }
 }

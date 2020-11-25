@@ -8,7 +8,7 @@
         <div class="col-lg-9 col-md-8">
             <div class="breadcrumb-admin d-inline">
                 <i class="fas fa-graduation-cap"></i>
-                @lang('modules.dashboard.menu.class.online')
+                @lang('modules.dashboard.menu.class.hands')
             </div>
             <div class="btn-group-sm btn-func d-inline">
                 <button type="button" class="btn btn-dark reload">
@@ -38,7 +38,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="online/add" class="change-form" enctype="multipart/form-data">
+                    <form method="POST" action="offline/add" class="change-form" enctype="multipart/form-data">
                         @csrf
                         <div class="input-group">
                             <span class="input-group-btn">
@@ -64,11 +64,7 @@
                         <label for="" class="required control-label">@lang('modules.online.lesson')</label>
                         <input class="form-control" name="lesson" required>
                         <label for="" class="control-label">@lang('modules.online.trailer')</label>
-                        <input class="form-control" name="trailer" required>
-                        <label for="" class="control-label">@lang('modules.online.video')</label>
-                        <div class="form-add-video" ></div>
-
-                        <a class="d-block add-video" style="font-family: font-medium; color:2e1503; cursor: pointer;">Thêm...</a>
+                        <input class="form-control" name="trailer">
                         <button class="btn-change">@lang('modules.changeinfor.confirm')</button>
                         <button class="btn-back" data-dismiss="modal">@lang('modules.back')</button>
                     </form>
@@ -117,12 +113,17 @@
         </tr>
         </thead>
         <tbody id="search-body">
-            @foreach ($online as $courses)
+            @foreach ($offline as $courses)
             <tr>
                 <td class="btn-gr d-none"><input type="checkbox" class="check" name="delete[]" value="{{ $courses->id }}"></td>
                 <td><img src="{{ $courses->img }}" class="preview-img"></td>
                 <td>{{ $courses->title }}</td>
-                <td>{{ $courses->level }}</td>
+                <td>@foreach ($level as $levels)
+                        @if ($courses->level == $levels->id)
+                            {{ $levels->title }}
+                        @endif
+                    @endforeach
+                </td>
                 <td>{{ $courses->lesson }}</td>
                 <td>{{ $courses->price }}</td>
                 <td>{{ $courses->created_at }}</td>
@@ -131,7 +132,7 @@
                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$courses->id}}">
                             <span class="fas fa-edit"></span>
                         </button>
-                        <a href="{{ url('online/delete') }}/{{$courses->id}}" class="btn btn-primary" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">
+                        <a href="{{ url('offline/delete') }}/{{$courses->id}}" class="btn btn-primary" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">
                             <span class="fas fa-trash-alt"></span>
                         </a>
                     </div>
@@ -147,7 +148,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form method="POST" action="{{ url('online/edit') }}/{{$courses->id}}" class="change-form" enctype="multipart/form-data">
+                                <form method="POST" action="{{ url('offline/edit') }}/{{$courses->id}}" class="change-form" enctype="multipart/form-data">
                                     @csrf
                                     <div class="input-group">
                                         <span class="input-group-btn">
@@ -155,16 +156,26 @@
                                             Chọn tệp:
                                             </a>
                                         </span>
-                                        {{-- <input class="form-control thumbnail-edit" type="text" name="filepath" value="{!! old('img', $courses->img) !!}"> --}}
                                         <input class="form-control thumbnail-edit" type="text" name="filepath" value="{{ $courses->img }}">
                                     </div>
-                                    <div class="box-preview-img edit-img"><img src="{{ $courses->img }}"></div>
-                                    <label for="" class="required control-label">@lang('modules.courses.name')</label>
+                                    <div class="box-preview-img"><img src="{{ $courses->img }}"></div>
+                                    <label for="" class="required control-label">@lang('modules.online.name')</label>
                                     <input class="form-control" value="{{$courses->title}}" name="title" required>
-                                    <label for="" class="required control-label">@lang('modules.courses.summary')</label>
+                                    <label for="" class="required control-label">@lang('modules.online.summary')</label>
                                     <input class="form-control" value="{{$courses->summary}}" name="summary" required>
-                                    <label for="" class="required control-label">@lang('modules.courses.content')</label>
+                                    <label for="" class="required control-label">@lang('modules.online.content')</label>
                                     <textarea class="edit-detail" name="detail">{!! old('detail', $courses->detail) !!}</textarea>
+                                    <label for="" class="required control-label">@lang('modules.online.level')</label>
+                                    <select class="js-level form-control" name="level"></select>
+                                    <label for="" class="required control-label">@lang('modules.online.price')</label>
+                                    <input class="form-control" value="{{$courses->price}}" name="price" required>
+                                    <label for="" class="control-label">@lang('modules.online.promo_price')</label>
+                                    <input class="form-control" value="{{$courses->promo_price}}" name="promo">
+                                    <label for="" class="required control-label">@lang('modules.online.lesson')</label>
+                                    <input class="form-control" value="{{$courses->lesson}}" name="lesson" required>
+                                    <label for="" class="control-label">@lang('modules.online.trailer')</label>
+                                    <input class="form-control" value="{{$courses->trailer}}" name="trailer">
+
                                     <button class="btn-change">@lang('modules.changeinfor.confirm')</button>
                                     <button class="btn-back" data-dismiss="modal">@lang('modules.back')</button>
                                 </form>
@@ -177,7 +188,7 @@
             @endforeach
         </tbody>
     </table>
-    {{$online->links('admin.layout.pagination')}}
+    {{$offline ?? ''->links('admin.layout.pagination')}}
 </div>
 
 
@@ -200,7 +211,7 @@
                 url: 'levels/select',
                     type: 'get',
                     success: function(data){
-                        $('#level').html(data);
+                        $('.js-level').html(data);
                     }
             });
         });

@@ -64,9 +64,9 @@ class FreeTutorialsController extends Controller
         return response()->json(['status' => true,'message'=>"Xóa thành công!"]);
     }
 
-    public function search(Request $request){
-        $freetutorials = FreeTutorials::where('title', 'like', '%' . $request->search . '%')
-                    ->paginate(5);
-        return view('admin.freetutorials',['freetutorial' => $freetutorials]);
-    }
+    // public function search(Request $request){
+    //     $freetutorials = FreeTutorials::where('title', 'like', '%' . $request->search . '%')
+    //                 ->paginate(5);
+    //     return view('admin.freetutorials',['freetutorial' => $freetutorials]);
+    // }
 }

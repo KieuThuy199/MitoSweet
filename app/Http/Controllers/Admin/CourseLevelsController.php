@@ -21,7 +21,7 @@ class CourseLevelsController extends Controller
                 $levels->title   = $request->title;
                 $levels->save();
                 DB::commit();
-                return redirect()->back()->with('status', 'Thêm hướng dẫn thành công!');
+                return redirect()->back()->with('status', 'Thêm cấp độ thành công!');
             }
             catch (\Exception $exception){
                 DB::rollBack();
@@ -35,7 +35,7 @@ class CourseLevelsController extends Controller
         if($request->isMethod('post')){
             $levels->title   = $request->title;
             $levels->save();
-            return redirect()->back()->with('status', 'Sửa hướng dẫn thành công!');
+            return redirect()->back()->with('status', 'Sửa cấp độ thành công!');
         }
         return redirect()->back();
     }
@@ -43,7 +43,7 @@ class CourseLevelsController extends Controller
     public function delete($id){
         $levels = CourseLevels::find($id);
         $levels->delete();
-        return redirect()->back()->with('status', 'Xóa hướng dẫn thành công!');
+        return redirect()->back()->with('status', 'Xóa cấp độ thành công!');
     }
 
     public function deleteMul(Request $request)
@@ -56,11 +56,11 @@ class CourseLevelsController extends Controller
         return response()->json(['status' => true,'message'=>"Xóa thành công!"]);
     }
 
-    public function search(Request $request){
-        $levels = CourseLevels::where('title', 'like', '%' . $request->search . '%')
-                    ->paginate(5);
-        return view('admin.courselevels',['level' => $levels]);
-    }
+    // public function search(Request $request){
+    //     $levels = CourseLevels::where('title', 'like', '%' . $request->search . '%')
+    //                 ->paginate(5);
+    //     return view('admin.courselevels',['level' => $levels]);
+    // }
 
     public function select()
     {

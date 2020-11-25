@@ -53,12 +53,12 @@
                 @lang('modules.dashboard.menu.freetutorial')
             </a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link" href="#">
                 <i class="far fa-images"></i>
                 @lang('modules.dashboard.menu.gallery')
             </a>
-        </li>
+        </li> --}}
         <li class="nav-item">
             <a class="nav-link" href="#">
                 <i class="far fa-calendar-alt"></i>
@@ -72,26 +72,27 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed {{ request()->is('course/*') ? 'active' : '' }}" data-toggle="collapse" data-target="#classdetail">
+            <a class="nav-link collapsed" data-toggle="collapse" data-target="#classdetail">
+                {{-- {{ request()->is('*') ? 'active' : '' }} --}}
                 <i class="fas fa-graduation-cap"></i>
                 @lang('modules.dashboard.menu.class.title')
                 <button class="btn icon-show"></button>
             </a>
             <ul class="submenu collapse" id="classdetail">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('course/online') ? 'active' : '' }}" href="{{ url('course/online')}}">
+                    <a class="nav-link {{ request()->is('online') ? 'active' : '' }}" href="{{ url('online')}}">
                         <i class="fas fa-graduation-cap"></i>
                         @lang('modules.dashboard.menu.class.online')
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link {{ request()->is('offline') ? 'active' : '' }}" href="{{ url('offline')}}">
                         <i class="fas fa-school"></i>
                         @lang('modules.dashboard.menu.class.hands')
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('course/levels') ? 'active' : '' }}" href="{{ url('course/levels')}}">
+                    <a class="nav-link {{ request()->is('levels') ? 'active' : '' }}" href="{{ url('levels')}}">
                         <i class="fas fa-level-up-alt"></i>
                         @lang('modules.dashboard.menu.class.level')
                     </a>
