@@ -93,7 +93,7 @@
 {{-- Xóa nhiều--}}
 <div class="btn-group-sm btn-gr d-none">
     <input type="checkbox" id="checkAll">
-    <button type="submit" class="btn btn-danger btn-del">
+    <button type="submit" class="btn btn-danger btn-off">
         <i class="fas fa-trash-alt"></i>
     </button>
 </div>

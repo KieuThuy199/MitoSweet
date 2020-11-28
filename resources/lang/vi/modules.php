@@ -105,6 +105,10 @@ return array (
         'trailer'     => 'Trailer',
         'video'       => 'Video',
     ),
+    'discount' => array(
+        'code'     => 'Mã giảm giá',
+        'discount' => 'Giảm giá (%)'
+    ),
     'web' => array(
         'online' => 'Banner Khóa học trực tuyến',
         'hands'  => 'Banner Khóa học tại lớp',

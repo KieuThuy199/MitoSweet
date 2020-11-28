@@ -19,6 +19,28 @@ $('.reload').click(function() {
     location.reload();
 })
 
+// search
+$("#search").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#search-body tr").filter(function() {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+});
+
+// thêm video
+$('.add-video').click(function(){
+    let a ='';
+    a += `  <div class="add-video">
+                <input class="form-control" name="name-video" placeholder="Tên video...">
+                <textarea class="form-control" name="video" placeholder="Đường link video..."></textarea>
+                <a class="deletevideo" style="color:2e1503; cursor: pointer;" onclick="remove()">Xóa</a>
+            </div>`;
+    $('.form-add-video').append(a);
+})
+function remove(){
+    $('.add-video').remove();
+}
+
 // show xóa nhiều trường
 $('.btn-del-show').click(function(){
     if ($('.btn-gr').hasClass('d-none')){
@@ -64,7 +86,7 @@ $('.btn-del').click(function(){
 // truyền id để xóa nhiều (hướng dẫn)
 $('.btn-free').click(function(){
     let id = [];
-    let a = confirm('Ban có chắc chắn muốn xóa những tin tức này?');
+    let a = confirm('Ban có chắc chắn muốn xóa những hướng dẫn này?');
     if (a == true) {
         $(".check:checked").each(function() {
             id.push($(this).val());
@@ -84,29 +106,93 @@ $('.btn-free').click(function(){
                 }
             });
         }else{
-            alert('Không có tin tức được chọn!');
+            alert('Không có video được chọn!');
         }
     }
 })
 
-// search
-$("#search").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#search-body tr").filter(function() {
-    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-});
-
-// thêm video
-$('.add-video').click(function(){
-    let a ='';
-    a += `  <div class="add-video">
-                <input class="form-control" name="name-video" placeholder="Tên video...">
-                <textarea class="form-control" name="video" placeholder="Đường link video..."></textarea>
-                <a class="deletevideo" style="color:2e1503; cursor: pointer;" onclick="remove()">Xóa</a>
-            </div>`;
-    $('.form-add-video').append(a);
+// truyền id để xóa nhiều (cấp độ)
+$('.btn-level').click(function(){
+    let id = [];
+    let a = confirm('Ban có chắc chắn muốn xóa những cấp độ này?');
+    if (a == true) {
+        $(".check:checked").each(function() {
+            id.push($(this).val());
+        })
+        if(id.length > 0){
+            $.ajax({
+                url: '/levels/deleteMul',
+                type: 'get',
+                data: 'ids=' + id,
+                success: function (data) {
+                    if (data['status'] == true) {
+                        $(".check:checked").each(function() {
+                            $(this).parents("tr").remove();
+                        });
+                        alert(data['message']);
+                    }
+                }
+            });
+        }else{
+            alert('Không có cấp độ được chọn!');
+        }
+    }
 })
-function remove(){
-    $('.add-video').remove();
-}
+
+// truyền id để xóa nhiều (lớp thực hành)
+$('.btn-off').click(function(){
+    let id = [];
+    let a = confirm('Ban có chắc chắn muốn xóa những khóa học này?');
+    if (a == true) {
+        $(".check:checked").each(function() {
+            id.push($(this).val());
+        })
+        if(id.length > 0){
+            $.ajax({
+                url: '/offline/deleteMul',
+                type: 'get',
+                data: 'ids=' + id,
+                success: function (data) {
+                    if (data['status'] == true) {
+                        $(".check:checked").each(function() {
+                            $(this).parents("tr").remove();
+                        });
+                        alert(data['message']);
+                    }
+                }
+            });
+        }else{
+            alert('Không có khóa học được chọn!');
+        }
+    }
+})
+
+// truyền id để xóa nhiều (khuyến mãi)
+$('.btn-dis').click(function(){
+    let id = [];
+    let a = confirm('Ban có chắc chắn muốn xóa những phiếu giảm giá này?');
+    if (a == true) {
+        $(".check:checked").each(function() {
+            id.push($(this).val());
+        })
+        if(id.length > 0){
+            $.ajax({
+                url: '/coupons/deleteMul',
+                type: 'get',
+                data: 'ids=' + id,
+                success: function (data) {
+                    if (data['status'] == true) {
+                        $(".check:checked").each(function() {
+                            $(this).parents("tr").remove();
+                        });
+                        alert(data['message']);
+                    }
+                }
+            });
+        }else{
+            alert('Không có phiếu giảm giá được chọn!');
+        }
+    }
+})
+
+

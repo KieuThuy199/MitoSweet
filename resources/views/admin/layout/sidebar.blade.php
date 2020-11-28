@@ -13,8 +13,6 @@
             'barcode'        => 'Loại bánh',
             'compress'       => 'Kích thước bánh',
             'paw'            => 'Hình dạng bánh',
-            'bookmark'       => 'Hương vị bánh',
-            'palette'        => 'Màu sắc bánh',
             'file-alt'       => 'Đơn đặt bánh',
         );
         $admin = array(
@@ -98,7 +96,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link {{ request()->is('coupons') ? 'active' : '' }}" href="{{ url('coupons')}}">
                         <i class="fas fa-gift"></i>
                         @lang('modules.dashboard.menu.class.discount')
                     </a>

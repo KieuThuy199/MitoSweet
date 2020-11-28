@@ -33,7 +33,6 @@ Route::group(['namespace' => 'Admin'],
         Route::match(['get', 'post'],'freetutorials/edit/{id}', 'FreeTutorialsController@edit');
         Route::get('freetutorials/delete/{id}', 'FreeTutorialsController@delete');
         Route::get('freetutorials/deleteMul', 'FreeTutorialsController@deleteMul');
-        // Route::post('freetutorials/search', 'FreeTutorialsController@search');
 
         // Course
         // Route::prefix('course')->group(function () {
@@ -42,20 +41,22 @@ Route::group(['namespace' => 'Admin'],
             Route::match(['get', 'post'],'levels/edit/{id}', 'CourseLevelsController@edit');
             Route::get('levels/delete/{id}', 'CourseLevelsController@delete');
             Route::get('levels/deleteMul', 'CourseLevelsController@deleteMul');
-            Route::get('levels/select', 'CourseLevelsController@select');
 
             Route::get('online', 'OnlineCoursesController@data');
 
+            // Offline
             Route::get('offline', 'OfflineCoursesController@data');
             Route::match(['get', 'post'],'offline/add', 'OfflineCoursesController@add');
             Route::match(['get', 'post'],'offline/edit/{id}', 'OfflineCoursesController@edit');
             Route::get('offline/delete/{id}', 'OfflineCoursesController@delete');
             Route::get('offline/deleteMul', 'OfflineCoursesController@deleteMul');
-            // Route::match(['get', 'post'],'levels/add', 'CourseLevelsController@add');
-            // Route::match(['get', 'post'],'levels/edit/{id}', 'CourseLevelsController@edit');
-            // Route::get('levels/delete/{id}', 'CourseLevelsController@delete');
-            // Route::get('levels/deleteMul', 'CourseLevelsController@deleteMul');
-            // Route::post('levels/search', 'CourseLevelsController@search');
+
+            // Coupons
+            Route::get('coupons', 'CouponsController@data');
+            Route::match(['get', 'post'],'coupons/add', 'CouponsController@add');
+            Route::match(['get', 'post'],'coupons/edit/{id}', 'CouponsController@edit');
+            Route::get('coupons/delete/{id}', 'CouponsController@delete');
+            Route::get('coupons/deleteMul', 'CouponsController@deleteMul');
         // });
 
 });
