@@ -79,7 +79,7 @@
         <thead>
         <tr>
             <th scope="col" class="btn-gr d-none">#</th>
-            <th scope="col">Tiêu đề</th>
+            <th scope="col">Tên cấp độ</th>
             <th scope="col">Thời gian tạo</th>
             <th scope="col">Chức năng</th>
         </tr>

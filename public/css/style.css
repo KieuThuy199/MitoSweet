@@ -2,14 +2,14 @@
     font-weight: none;
 }
 @font-face{
+    font-family: "font-thin";
+    src: url(../font/GothamLight.otf);
+}
+@font-face{
     font-family: "font-medium" ;
     src: url(../font/Gotham-Medium.otf);
 
   }
-@font-face{
-    font-family: "font-thin";
-    src: url(../font/Gotham-Thin.otf);
-}
 @font-face{
     font-family: "font-ultra";
     src: url(../font/Gotham-Ultra.otf);

@@ -37,9 +37,10 @@ $('.add-video').click(function(){
             </div>`;
     $('.form-add-video').append(a);
 })
-function remove(){
-    $('.add-video').remove();
-}
+
+// function remove(){
+//     $('.add-video').remove();
+// }
 
 // show xóa nhiều trường
 $('.btn-del-show').click(function(){
@@ -195,4 +196,87 @@ $('.btn-dis').click(function(){
     }
 })
 
+// truyền id để xóa nhiều (loại bánh)
+$('.btn-type').click(function(){
+    let id = [];
+    let a = confirm('Ban có chắc chắn muốn xóa những loại bánh này?');
+    if (a == true) {
+        $(".check:checked").each(function() {
+            id.push($(this).val());
+        })
+        if(id.length > 0){
+            $.ajax({
+                url: '/cake-types/deleteMul',
+                type: 'get',
+                data: 'ids=' + id,
+                success: function (data) {
+                    if (data['status'] == true) {
+                        $(".check:checked").each(function() {
+                            $(this).parents("tr").remove();
+                        });
+                        alert(data['message']);
+                    }
+                }
+            });
+        }else{
+            alert('Không có loại bánh nào được chọn!');
+        }
+    }
+})
+
+// truyền id để xóa nhiều (hình dạng bánh)
+$('.btn-shape').click(function(){
+    let id = [];
+    let a = confirm('Ban có chắc chắn muốn xóa những hình dạng bánh này?');
+    if (a == true) {
+        $(".check:checked").each(function() {
+            id.push($(this).val());
+        })
+        if(id.length > 0){
+            $.ajax({
+                url: '/cake-shapes/deleteMul',
+                type: 'get',
+                data: 'ids=' + id,
+                success: function (data) {
+                    if (data['status'] == true) {
+                        $(".check:checked").each(function() {
+                            $(this).parents("tr").remove();
+                        });
+                        alert(data['message']);
+                    }
+                }
+            });
+        }else{
+            alert('Không có hình dạng bánh được chọn!');
+        }
+    }
+})
+
+// truyền id để xóa nhiều (kích thước bánh)
+$('.btn-size').click(function(){
+    let id = [];
+    let a = confirm('Ban có chắc chắn muốn xóa những kích thước này?');
+    if (a == true) {
+        $(".check:checked").each(function() {
+            id.push($(this).val());
+        })
+        if(id.length > 0){
+            $.ajax({
+                url: '/cake-sizes/deleteMul',
+                type: 'get',
+                data: 'ids=' + id,
+                success: function (data) {
+                    if (data['status'] == true) {
+                        $(".check:checked").each(function() {
+                            $(this).parents("tr").remove();
+                        });
+                        alert(data['message']);
+                    }
+                }
+            });
+        }else{
+            alert('Không có kích thước được chọn!');
+        }
+    }
+})
 

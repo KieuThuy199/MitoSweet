@@ -27,8 +27,6 @@ return array (
                 'type' => 'Loại bánh',
                 'size' => 'Kích thước bánh',
                 'shape' => 'Hình dạng bánh',
-                'flavor' => 'Hương vị bánh',
-                'color' => 'Màu sắc bánh',
                 'bill' => 'Đơn đặt bánh',
             ),
             'admin' => array(

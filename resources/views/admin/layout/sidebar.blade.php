@@ -1,13 +1,5 @@
 <nav id="sidebarMenu" class="navside">
     @php
-        $class = array(
-            'graduation-cap' => 'Khóa học trực tuyến',
-            'school'         => 'Khóa học thực hành',
-            'level-up-alt'   => 'Cấp độ',
-            'tags'           => 'Hashtag',
-            'gift'           => 'Phiếu giảm giá',
-            'file-alt'       => 'Đơn mua khóa học',
-        );
         $cake = array(
             'birthday-cake'  => 'Bánh',
             'barcode'        => 'Loại bánh',
@@ -51,12 +43,6 @@
                 @lang('modules.dashboard.menu.freetutorial')
             </a>
         </li>
-        {{-- <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="far fa-images"></i>
-                @lang('modules.dashboard.menu.gallery')
-            </a>
-        </li> --}}
         <li class="nav-item">
             <a class="nav-link" href="#">
                 <i class="far fa-calendar-alt"></i>
@@ -107,14 +93,6 @@
                         @lang('modules.dashboard.menu.class.bill')
                     </a>
                 </li>
-                {{-- @foreach ($class as $key => $item)
-                    <li class="nav-item">
-                        <a class="nav-link" href="/{{$key}}">
-                            <i class="fas fa-{{$key}}"></i>
-                            {{ $item }}
-                        </a>
-                    </li>
-                @endforeach --}}
             </ul>
         </li>
         <li class="nav-item">
@@ -124,14 +102,36 @@
                 <button class="btn icon-show"></button>
             </a>
             <ul class="submenu collapse" id="cakedetail">
-                @foreach ($cake as $key => $item)
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                        <i class="fas fa-{{$key}}"></i>
-                        {{ $item }}
-                        </a>
-                    </li>
-                @endforeach
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-birthday-cake"></i>
+                        @lang('modules.dashboard.menu.cake.title')
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('cake-types') ? 'active' : '' }}" href="{{ url('cake-types')}}">
+                        <i class="fas fa-barcode"></i>
+                        @lang('modules.dashboard.menu.cake.type')
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('cake-sizes') ? 'active' : '' }}" href="{{ url('cake-sizes')}}">
+                        <i class="fas fa-compress"></i>
+                        @lang('modules.dashboard.menu.cake.size')
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('cake-shapes') ? 'active' : '' }}" href="{{ url('cake-shapes')}}">
+                        <i class="fas fa-paw"></i>
+                        @lang('modules.dashboard.menu.cake.shape')
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-file-alt"></i>
+                        @lang('modules.dashboard.menu.cake.bill')
+                    </a>
+                </li>
             </ul>
         </li>
         <li class="nav-item">

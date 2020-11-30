@@ -36,6 +36,7 @@ Route::group(['namespace' => 'Admin'],
 
         // Course
         // Route::prefix('course')->group(function () {
+            // Cấp độ
             Route::get('levels', 'CourseLevelsController@data');
             Route::match(['get', 'post'],'levels/add', 'CourseLevelsController@add');
             Route::match(['get', 'post'],'levels/edit/{id}', 'CourseLevelsController@edit');
@@ -57,6 +58,28 @@ Route::group(['namespace' => 'Admin'],
             Route::match(['get', 'post'],'coupons/edit/{id}', 'CouponsController@edit');
             Route::get('coupons/delete/{id}', 'CouponsController@delete');
             Route::get('coupons/deleteMul', 'CouponsController@deleteMul');
+
+        // Bánh
+            // Hình dáng
+            Route::get('cake-shapes', 'CakeShapesController@data');
+            Route::match(['get', 'post'],'cake-shapes/add', 'CakeShapesController@add');
+            Route::match(['get', 'post'],'cake-shapes/edit/{id}', 'CakeShapesController@edit');
+            Route::get('cake-shapes/delete/{id}', 'CakeShapesController@delete');
+            Route::get('cake-shapes/deleteMul', 'CakeShapesController@deleteMul');
+
+            // Loại bánh
+            Route::get('cake-types', 'CakeTypesController@data');
+            Route::match(['get', 'post'],'cake-types/add', 'CakeTypesController@add');
+            Route::match(['get', 'post'],'cake-types/edit/{id}', 'CakeTypesController@edit');
+            Route::get('cake-types/delete/{id}', 'CakeTypesController@delete');
+            Route::get('cake-types/deleteMul', 'CakeTypesController@deleteMul');
+
+            // Kích thước bánh
+            Route::get('cake-sizes', 'CakeSizesController@data');
+            Route::match(['get', 'post'],'cake-sizes/add', 'CakeSizesController@add');
+            Route::match(['get', 'post'],'cake-sizes/edit/{id}', 'CakeSizesController@edit');
+            Route::get('cake-sizes/delete/{id}', 'CakeSizesController@delete');
+            Route::get('cake-sizes/deleteMul', 'CakeSizesController@deleteMul');
         // });
 
 });
@@ -67,4 +90,8 @@ Route::group(['namespace' => 'Admin'],
 // });
 Route::group(['prefix' => 'laravel-filemanager'], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
+});
+
+Route::get('/user', function () {
+    return view('user.index');
 });
