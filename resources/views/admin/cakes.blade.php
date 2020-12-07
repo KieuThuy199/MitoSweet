@@ -7,8 +7,8 @@
     <div class="row">
         <div class="col-lg-9 col-md-8">
             <div class="breadcrumb-admin d-inline">
-                <i class="fas fa-graduation-cap"></i>
-                @lang('modules.dashboard.menu.class.hands')
+                <i class="fas fa-birthday-cake"></i>
+                @lang('modules.dashboard.menu.cake.title')
             </div>
             <div class="btn-group-sm btn-func d-inline">
                 <button type="button" class="btn btn-dark reload">
@@ -38,7 +38,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="offline/add" class="change-form" enctype="multipart/form-data">
+                    <form method="POST" action="cakes/add" class="change-form" enctype="multipart/form-data">
                         @csrf
                         <div class="input-group">
                             <span class="input-group-btn">
@@ -49,26 +49,29 @@
                             <input class="form-control thumbnail" type="text" name="filepath">
                         </div>
                         <div class="box-preview-img"></div>
-                        <label for="" class="required control-label">@lang('modules.online.name')</label>
+                        <label for="" class="required control-label">@lang('modules.cake.name')</label>
                         <input class="form-control" name="title" required>
-                        <label for="" class="required control-label">@lang('modules.online.summary')</label>
+                        <label for="" class="required control-label">@lang('modules.cake.summary')</label>
                         <input class="form-control" name="summary" required>
-                        <label for="" class="required control-label">@lang('modules.online.content')</label>
+                        <label for="" class="required control-label">@lang('modules.cake.content')</label>
                         <textarea class="detail" name="detail">{!! old('detail', $detail ?? '') !!}</textarea>
-                        <label for="" class="required control-label">@lang('modules.online.level')</label>
-                        <select class="js-level form-control" name="level" id="level">
-                            @foreach ($level as $item)
+                        <label for="" class="control-label">@lang('modules.cake.note')</label>
+                        <input class="form-control" name="note">
+                        <label for="" class="required control-label">@lang('modules.cake.type')</label>
+                        <select class="js-type form-control" name="type" id="type">
+                            @foreach ($type as $item)
                                 <option value="{{$item->id}}">{{$item->title}}</option>
                             @endforeach
                         </select>
-                        <label for="" class="required control-label">@lang('modules.online.price')</label>
-                        <input class="form-control" name="price" required>
-                        <label for="" class="control-label">@lang('modules.online.promo_price')</label>
-                        <input class="form-control" name="promo">
-                        <label for="" class="required control-label">@lang('modules.online.lesson')</label>
-                        <input class="form-control" name="lesson" required>
-                        <label for="" class="control-label">@lang('modules.online.trailer')</label>
-                        <input class="form-control" name="trailer">
+                        <label for="" class="required control-label">@lang('modules.cake.code')</label>
+                        <input class="form-control" name="code" placeholder="VD: A123" required pattern="[A-Z]{1}[0-9]{3}">
+                        <label for="" class="control-label d-block">@lang('modules.cake.size')</label>
+                        {{-- <input class="form-control" name="size"> --}}
+                        @foreach ($size as $sizes)
+                            <input type="checkbox" class="size" name="size[]" value="{{ $sizes->id }}">
+                            {{$sizes->title}} &emsp;
+                        @endforeach
+
                         <button class="btn-change">@lang('modules.changeinfor.confirm')</button>
                         <button class="btn-back" data-dismiss="modal">@lang('modules.back')</button>
                     </form>
@@ -97,52 +100,59 @@
 {{-- Xóa nhiều--}}
 <div class="btn-group-sm btn-gr d-none">
     <input type="checkbox" id="checkAll">
-    <button type="submit" class="btn btn-danger btn-off">
+    <button type="submit" class="btn btn-danger btn-cake">
         <i class="fas fa-trash-alt"></i>
     </button>
 </div>
 
 <div class="table-responsive">
-    <table class="table table-bordered text-center"  id="data_news">
+    <table class="table table-bordered text-center"  id="data_cake">
         <thead>
         <tr>
             <th scope="col" class="btn-gr d-none">#</th>
             <th scope="col">Hình ảnh</th>
-            <th scope="col">Tên khóa học</th>
-            <th scope="col">Cấp độ</th>
-            <th scope="col">Số bài học</th>
-            <th scope="col">Giá</th>
+            <th scope="col">Tên bánh</th>
+            <th scope="col">Loại bánh</th>
+            <th scope="col">Mã bánh</th>
+            <th scope="col">Kích thước</th>
             <th scope="col">Thời gian tạo</th>
             <th scope="col">Chức năng</th>
         </tr>
         </thead>
         <tbody id="search-body">
-            @foreach ($offline as $courses)
+            @foreach ($cake as $cakes)
             <tr>
-                <td class="btn-gr d-none"><input type="checkbox" class="check" name="delete[]" value="{{ $courses->id }}"></td>
-                <td><img src="{{ $courses->img }}" class="preview-img"></td>
-                <td>{{ $courses->title }}</td>
-                <td>@foreach ($level as $levels)
-                        @if ($courses->level == $levels->id)
-                            {{ $levels->title }}
+                <td class="btn-gr d-none"><input type="checkbox" class="check" name="delete[]" value="{{ $cakes->id }}"></td>
+                <td><img src="{{ $cakes->img }}" class="preview-img"></td>
+                <td>{{ $cakes->title }}</td>
+                <td>@foreach ($type as $types)
+                        @if ($cakes->cake_types == $types->id)
+                            {{ $types->title }}
                         @endif
                     @endforeach
                 </td>
-                <td>{{ $courses->lesson }}</td>
-                <td>{{ $courses->price }}</td>
-                <td>{{ $courses->created_at }}</td>
+                <td>{{ $cakes->code }}</td>
+                <td>@foreach ($size as $sizes)
+                        @foreach (explode(",", $cakes->cake_sizes) as $item)
+                            @if ($item == $sizes->id)
+                                {{ $sizes->title }}<br>
+                            @endif
+                        @endforeach
+                    @endforeach
+                </td>
+                <td>{{ $cakes->created_at }}</td>
                 <td>
                     <div class="btn-group-sm btn-func">
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$courses->id}}">
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$cakes->id}}">
                             <span class="fas fa-edit"></span>
                         </button>
-                        <a href="{{ url('offline/delete') }}/{{$courses->id}}" class="btn btn-primary" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">
+                        <a href="{{ url('cakes/delete') }}/{{$cakes->id}}" class="btn btn-primary" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">
                             <span class="fas fa-trash-alt"></span>
                         </a>
                     </div>
                 </td>
                 {{-- form edit --}}
-                <div class="modal fade" id="editModal{{$courses->id}}">
+                <div class="modal fade" id="editModal{{$cakes->id}}">
                     <div class="modal-dialog modal-xl modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -152,7 +162,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form method="POST" action="{{ url('offline/edit') }}/{{$courses->id}}" class="change-form" enctype="multipart/form-data">
+                                <form method="POST" action="{{ url('cakes/edit') }}/{{$cakes->id}}" class="change-form" enctype="multipart/form-data">
                                     @csrf
                                     <div class="input-group">
                                         <span class="input-group-btn">
@@ -160,34 +170,38 @@
                                             Chọn tệp:
                                             </a>
                                         </span>
-                                        <input class="form-control thumbnail-edit" type="text" name="filepath" value="{{ $courses->img }}">
+                                        <input class="form-control thumbnail-edit" type="text" name="filepath" value="{{ $cakes->img }}">
                                     </div>
-                                    <div class="box-preview-img"><img src="{{ $courses->img }}"></div>
-                                    <label for="" class="required control-label">@lang('modules.online.name')</label>
-                                    <input class="form-control" value="{{$courses->title}}" name="title" required>
-                                    <label for="" class="required control-label">@lang('modules.online.summary')</label>
-                                    <input class="form-control" value="{{$courses->summary}}" name="summary" required>
-                                    <label for="" class="required control-label">@lang('modules.online.content')</label>
-                                    <textarea class="edit-detail" name="detail">{!! old('detail', $courses->detail) !!}</textarea>
-                                    <label for="" class="required control-label">@lang('modules.online.level')</label>
-                                    <select class="js-level form-control" name="level">
-                                        @foreach ($level as $item)
-                                            @if ($courses->level == $item->id)
+                                    <div class="box-preview-img"><img src="{{ $cakes->img }}"></div>
+                                    <label for="" class="required control-label">@lang('modules.cake.name')</label>
+                                    <input class="form-control" value="{{$cakes->title}}" name="title" required>
+                                    <label for="" class="required control-label">@lang('modules.cake.summary')</label>
+                                    <input class="form-control" value="{{$cakes->summary}}" name="summary" required>
+                                    <label for="" class="required control-label">@lang('modules.cake.content')</label>
+                                    <textarea class="edit-detail" name="detail">{!! old('detail', $cakes->detail) !!}</textarea>
+                                    <label for="" class="required control-label">@lang('modules.cake.type')</label>
+                                    <select class="js-type form-control" name="type">
+                                        @foreach ($type as $item)
+                                            @if ($cakes->cake_types == $item->id)
                                                 <option selected value="{{$item->id}}">{{$item->title}}</option>
                                             @else
                                                 <option value="{{$item->id}}">{{$item->title}}</option>
                                             @endif
                                         @endforeach
                                     </select>
-                                    <label for="" class="required control-label">@lang('modules.online.price')</label>
-                                    <input class="form-control" value="{{$courses->price}}" name="price" required>
-                                    <label for="" class="control-label">@lang('modules.online.promo_price')</label>
-                                    <input class="form-control" value="{{$courses->promo_price}}" name="promo">
-                                    <label for="" class="required control-label">@lang('modules.online.lesson')</label>
-                                    <input class="form-control" value="{{$courses->lesson}}" name="lesson" required>
-                                    <label for="" class="control-label">@lang('modules.online.trailer')</label>
-                                    <input class="form-control" value="{{$courses->trailer}}" name="trailer">
-
+                                    <label for="" class="required control-label">@lang('modules.cake.code')</label>
+                                    <input class="form-control" value="{{$cakes->code}}" name="code" placeholder="VD: A123" required pattern="[A-Z]{1}[0-9]{3}">
+                                    <label for="" class="control-label d-block">@lang('modules.cake.size')</label>
+                                    @foreach ($size as $sizes)
+                                        {{-- kiểm tra g/trị $sizes->id có trong mảng explode(",", $cakes->cake_sizes) hay k? --}}
+                                        @if(in_array($sizes->id, explode(",", $cakes->cake_sizes)))
+                                            <input type="checkbox" class="size" name="size[]" value="{{ $sizes->id }}" checked>
+                                            {{$sizes->title}} &emsp;
+                                        @else
+                                            <input type="checkbox" class="size" name="size[]" value="{{ $sizes->id }}">
+                                            {{$sizes->title}} &emsp;
+                                        @endif
+                                    @endforeach
                                     <button class="btn-change">@lang('modules.changeinfor.confirm')</button>
                                     <button class="btn-back" data-dismiss="modal">@lang('modules.back')</button>
                                 </form>
@@ -200,7 +214,7 @@
             @endforeach
         </tbody>
     </table>
-    {{$offline ?? ''->links('admin.layout.pagination')}}
+    {{$cake ?? ''->links('admin.layout.pagination')}}
 </div>
 
 
@@ -217,16 +231,4 @@
         $('#btn-img').filemanager('image', {prefix: route_prefix});
         $('a#btn-edit-img').filemanager('image', {prefix: route_prefix});
     </script>
-    {{-- <script>
-        $(function () {
-            $.ajax({
-                url: 'levels/select',
-                    type: 'get',
-                    success: function(data){
-                        $('.js-level').html(data);
-                    }
-            });
-        });
-    </script> --}}
-
 @endpush

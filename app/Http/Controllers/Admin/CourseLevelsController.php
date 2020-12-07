@@ -62,15 +62,15 @@ class CourseLevelsController extends Controller
     //     return view('admin.courselevels',['level' => $levels]);
     // }
 
-    public function select()
-    {
-        $level = CourseLevels::all();
-        $item = $level->count();
-        $db = [];
-        $db = $level;
-        for ($i = 0; $i < $item; $i++){
-            $db[$i] = '<option>'.$db[$i]->title.'</option>';
-        }
-        return $db;
-    }
+    // public function select()
+    // {
+    //     $level = CourseLevels::all();
+    //     $item = $level->count();
+    //     $db = [];
+    //     $db = $level;
+    //     for ($i = 0; $i < $item; $i++){
+    //         $db[$i] = '<option>'.$db[$i]->title.'</option>';
+    //     }
+    //     return $db;
+    // }
 }

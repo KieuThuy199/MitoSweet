@@ -35,8 +35,8 @@ class CouponsController extends Controller
         if($request->isMethod('post')){
             DB::beginTransaction();
             try{
-                $coupons = new Coupons();
-                $coupons->code   = $request->code;
+                $coupons           = new Coupons();
+                $coupons->code     = $request->code;
                 $coupons->discount = $request->discount;
 
                 $coupons->save();
@@ -48,13 +48,13 @@ class CouponsController extends Controller
                 return redirect()->back()->with('fail', 'Không thêm được!');
             }
         }
-        return view('admin.coupons');
+        return view('admin.discount');
     }
 
     public function edit(Request $request, $id){
         $coupons = Coupons::find($id);
         if($request->isMethod('post')){
-            $coupons->code   = $request->code;
+            $coupons->code     = $request->code;
             $coupons->discount = $request->discount;
             $coupons->save();
             return redirect()->back()->with('status', 'Sửa phiếu giảm giá thành công!');

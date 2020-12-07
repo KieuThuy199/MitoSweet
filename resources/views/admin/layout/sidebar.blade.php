@@ -1,12 +1,5 @@
 <nav id="sidebarMenu" class="navside">
     @php
-        $cake = array(
-            'birthday-cake'  => 'Bánh',
-            'barcode'        => 'Loại bánh',
-            'compress'       => 'Kích thước bánh',
-            'paw'            => 'Hình dạng bánh',
-            'file-alt'       => 'Đơn đặt bánh',
-        );
         $admin = array(
             'list'           => 'Danh sách tài khoản',
             'barcode'        => 'Loại tài khoản',
@@ -44,13 +37,13 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link {{ request()->is('schedules') ? 'active' : '' }}" href="{{ url('schedules')}}">
                 <i class="far fa-calendar-alt"></i>
                 @lang('modules.dashboard.menu.schedule')
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link {{ request()->is('pages') ? 'active' : '' }}" href="{{ url('pages')}}">
                 <i class="fas fa-tv"></i>
                 @lang('modules.dashboard.menu.web')
             </a>
@@ -103,7 +96,7 @@
             </a>
             <ul class="submenu collapse" id="cakedetail">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link {{ request()->is('cakes') ? 'active' : '' }}" href="{{ url('cakes')}}">
                         <i class="fas fa-birthday-cake"></i>
                         @lang('modules.dashboard.menu.cake.title')
                     </a>

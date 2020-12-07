@@ -26,8 +26,8 @@ class OfflineCoursesController extends Controller
                 $course->title       = $request->title;
                 $course->summary     = $request->summary;
                 $course->detail      = $request->detail;
-                $levels              = CourseLevels::select('id')->where('title', $request->level)->first();
-                $course->level       = $levels->id;
+                // $levels              = CourseLevels::select('id')->where('title', $request->level)->first();
+                $course->level       = $request->level;
                 $course->price       = $request->price;
                 $course->promo_price = $request->promo;
                 $course->lesson      = $request->lesson;
@@ -54,8 +54,8 @@ class OfflineCoursesController extends Controller
             $course->title       = $request->title;
             $course->summary     = $request->summary;
             $course->detail      = $request->detail;
-            $levels              = CourseLevels::select('id')->where('title', $request->level)->first();
-            $course->level       = $levels->id;
+            // $levels              = CourseLevels::select('id')->where('title', $request->level)->first();
+            $course->level       = $request->level;
             $course->price       = $request->price;
             $course->promo_price = $request->promo;
             $course->lesson      = $request->lesson;

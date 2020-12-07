@@ -8,7 +8,7 @@
           </ul>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="img/banner.png" alt="Los Angeles" width="100%" >
+              <img src="img/banner.png" width="100%" >
               <div class="carousel-caption slider">
                 <h3 class="title_slider_1">Lorem ipsum dolor sit </h3>
                 <p class="title_slider_2">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
@@ -16,7 +16,7 @@
               </div>
             </div>
             <div class="carousel-item">
-              <img src="img/banner01.png" alt="Chicago" width="100%">
+              <img src="img/banner01.png" width="100%">
               <div class="carousel-caption slider">
                 <h3 class="title_slider_1">Lorem ipsum dolor sit </h3>
                 <p class="title_slider_2">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
@@ -24,7 +24,7 @@
               </div>
             </div>
             <div class="carousel-item">
-              <img src="img/banner02.png" alt="New York" width="100%">
+              <img src="img/banner02.png" width="100%">
               <div class="carousel-caption slider">
                 <h3 class="title_slider_1">Lorem ipsum dolor sit </h3>
                 <p class="title_slider_2">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>

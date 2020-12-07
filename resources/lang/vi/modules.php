@@ -88,6 +88,14 @@ return array (
         'video' => 'Video',
         'name'  => 'Tiêu đề',
     ),
+    'schedule' => array(
+        'name'       => 'Tên khóa học',
+        'start_day'  => 'Từ ngày',
+        'end_day'    => 'Đến ngày',
+        'start'      => 'Bắt đầu',
+        'end'        => 'Kết thúc',
+        'week'       => 'Ngày học trong tuần',
+    ),
     'levels' => array(
         'name' => 'Tiêu đề',
     ),
@@ -103,13 +111,23 @@ return array (
         'trailer'     => 'Trailer',
         'video'       => 'Video',
     ),
+    'cake' => array(
+        'img'         => 'Hình ảnh',
+        'name'        => 'Tên bánh',
+        'summary'     => 'Tóm tắt',
+        'content'     => 'Mô tả',
+        'note'        => 'Ghi chú',
+        'type'        => 'Loại bánh',
+        'code'        => 'Mã bánh',
+        'size'        => 'Kích thước',
+    ),
     'discount' => array(
         'code'     => 'Mã giảm giá',
         'discount' => 'Giảm giá (%)'
     ),
     'web' => array(
         'online' => 'Banner Khóa học trực tuyến',
-        'hands'  => 'Banner Khóa học tại lớp',
+        'hands'  => 'Banner Khóa học thực hành',
         'order'  => 'Banner Đặt bánh',
         'title'  => 'Banner Tiêu đề',
         'decrip' => 'Banner Mô tả',

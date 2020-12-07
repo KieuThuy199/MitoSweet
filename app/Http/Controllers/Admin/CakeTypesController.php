@@ -57,4 +57,16 @@ class CakeTypesController extends Controller
         }
         return response()->json(['status' => true,'message'=>"Xóa thành công!"]);
     }
+
+    // public function select()
+    // {
+    //     $type = CakeTypes::all();
+    //     $item = $type->count();
+    //     $db = [];
+    //     $db = $type;
+    //     for ($i = 0; $i < $item; $i++){
+    //         $db[$i] = '<option>'.$db[$i]->title.'</option>';
+    //     }
+    //     return $db;
+    // }
 }

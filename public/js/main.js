@@ -280,3 +280,30 @@ $('.btn-size').click(function(){
     }
 })
 
+// truyền id để xóa nhiều (bánh)
+$('.btn-cake').click(function(){
+    let id = [];
+    let a = confirm('Ban có chắc chắn muốn xóa những kích thước này?');
+    if (a == true) {
+        $(".check:checked").each(function() {
+            id.push($(this).val());
+        })
+        if(id.length > 0){
+            $.ajax({
+                url: '/cakes/deleteMul',
+                type: 'get',
+                data: 'ids=' + id,
+                success: function (data) {
+                    if (data['status'] == true) {
+                        $(".check:checked").each(function() {
+                            $(this).parents("tr").remove();
+                        });
+                        alert(data['message']);
+                    }
+                }
+            });
+        }else{
+            alert('Không có kích thước được chọn!');
+        }
+    }
+})
