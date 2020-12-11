@@ -2419,187 +2419,7 @@ button.btn.icon-down:before{
         font-size: 18px !important;
     }
 }
-/******** Schedules *********/
-/********calendar*********/
-@media (min-width: 768px){
-    .seven-cols .col {
-      width: 100% !important;
-    }
-}
-@media (min-width: 992px) {
-    .seven-cols .col {
-      width: 14.285714285714285714285714285714%;
-    }
-}
-@media (min-width: 1200px) {
-    .seven-cols .col{
-      width: 14.285714285714285714285714285714%;
-    }
-}
-@media (max-width: 997px) {
-    .calendar .col{
-        padding: 1% !important;
-    }
-    .calendar .index{
-        right: 0 !important;
-        bottom: 18% !important;
-    }
-    #calendarSlider .MS-controls button{
-        top: 1.5% !important;
-    }
-    #calendarSlider .MS-controls .MS-left{
-        left: 30% !important;
-    }
-    #calendarSlider .MS-controls .MS-right{
-        right: 30% !important;
-    }
-    .calendar .day {
-        font-size: 18px !important;
-    }
-}
-@media (max-width: 765px){
-    #calendarSlider .MS-controls button {
-        top: 0.5% !important;
-    }
-    #calendarSlider .MS-controls .MS-left{
-        left: 20% !important;
-    }
-    #calendarSlider .MS-controls .MS-right{
-        right: 20% !important;
-    }
-}
 
-.calendar .row{
-    margin: 0;
-}
-.calendar .frame{
-    color: #2e1503;
-    border: 1px solid #594537;
-    padding: 1% 2%;
-}
-.calendar .day{
-    text-transform: uppercase;
-    font-family: 'font-medium';
-    font-weight: 100;
-    position: relative;
-    font-size: 20px;
-}
-.calendar .index{
-    background-color: #cff0cc;
-    position: absolute;
-    padding: 1% 7%;
-    right: 5%;
-    bottom: 23%;
-}
-.calendar .col{
-    padding-right: 5px;
-    padding-left: 15px;
-}
-.calendar .schedules{
-    border: 1px solid #594537;
-    padding: 1% 0.5% 2% 1%;
-}
-.calendar .today{
-    background-color: rgba(250,209,220,0.5);
-}
-.calendar .card{
-    border-radius: 0;
-    margin-top: 10%;
-    border: 0;
-    border-left: 7px solid #cff0cc;
-}
-.calendar .card:hover{
-    cursor: pointer;
-}
-.calendar .card-body{
-    padding: 5% 3%!important;
-}
-.calendar .card-title{
-    text-transform: uppercase;
-    color: #2e1503;
-    font-weight: 100;
-    font-family: 'font-medium';
-    font-size: 16px;
-}
-.calendar .time{
-    color: #bf5000;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 13px;
-}
-#calendarSlider {
-    position: relative;
-}
-#calendarSlider .MS-content {
-    white-space: nowrap;
-    overflow: hidden;
-}
-#calendarSlider .MS-content .item{
-    width: 100%;
-    display: inline-block;
-    position: relative;
-    vertical-align: top;
-    overflow: hidden;
-    height: 100%;
-    white-space: normal;
-    padding: 0 10px;
-}
-#calendarSlider .MS-content .item h4{
-    color: #2e1503;
-    padding: 2% 0;
-}
-#calendarSlider .MS-controls button {
-    color: #2e1503;
-    position: absolute;
-    border: none;
-    background-color: transparent;
-    outline: 0;
-    top: 3%;
-    transition: 0.15s linear;
-    z-index: 2;
-}
-#calendarSlider .MS-controls button:hover {
-    color: #bf5000;
-}
-#calendarSlider .MS-controls .MS-right {
-    right: 35%;
-}
-#calendarSlider .MS-controls .MS-left {
-    left: 35%;
-}
-#calendarSlider .MS-controls .icon-calendar {
-    right: 0;
-}
-.popup-title{
-    text-transform: uppercase;
-    color: #2e1503;
-    font-family: 'font-medium';
-    font-weight: 100;
-    font-size: 20px;
-}
-.popup-time{
-    color: #bf5000;
-    text-transform: uppercase;
-    font-weight: 600;
-}
-.calendar .modal-content{
-    padding: 5% 5% 3%;
-    border-radius: 0 !important;
-    background-color: #f5f2f0 !important;
-}
-.calendar .modal-content h6{
-    color: #2e1503;
-    font-family: 'font-medium';
-    font-weight: 100;
-}
-.calendar .modal-content .paragraph{
-    color: #2e1503;
-    font-weight: 600;
-}
-.calendar .modal-content .share{
-    border: 0;
-    background: none;
-}
 /*********** class *****************/
 .class_subscription_box{
    position: relative;
@@ -3029,3 +2849,255 @@ button.btn.icon-show1:before
     opacity: 0.9;
 }
 
+/******** Schedules *********/
+/* Calendar */
+.calendar-month {
+    width: 230px;
+    height: 200px;
+    color: #2e1503;
+    background-color: #fff;
+    position: absolute;
+    border-radius: 5px;
+    right: 3.5vw;
+    top: 14.5vw;
+    z-index: 1000;
+}
+
+.year {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2rem;
+    text-align: center;
+}
+
+  .year i {
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .year h1 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.2rem;
+  }
+
+  .month {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 0.5rem;
+  }
+
+  .month div {
+    font-size: 1.1rem;
+    margin: 0.5rem 0rem;
+    width: calc(100% / 4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .month div:hover:not(.today) {
+    background-color: #ffd1dc;
+    cursor: pointer;
+  }
+
+  /* .prev-date,
+  .next-date {
+    opacity: 0.5;
+  } */
+
+  .today {
+    background-color: #167e56;
+  }
+
+  #tail1 {
+    position: absolute;
+    top: -17px;
+    left: 20px;
+    border-color: transparent transparent #fff;
+    border-width: 10px;
+    border-style: solid;
+  }
+
+  /********calendar*********/
+/********calendar*********/
+@media (min-width: 768px){
+    .seven-cols .col {
+      width: 100% !important;
+    }
+}
+@media (min-width: 992px) {
+    .seven-cols .col {
+      width: 14.285714285714285714285714285714%;
+    }
+}
+@media (min-width: 1200px) {
+    .seven-cols .col{
+      width: 14.285714285714285714285714285714%;
+    }
+}
+@media (max-width: 997px) {
+    .calendar .col{
+        padding: 1% !important;
+    }
+    .calendar .index{
+        right: 0 !important;
+        bottom: 18% !important;
+    }
+    #calendarSlider .MS-controls button{
+        top: 1.5% !important;
+    }
+    #calendarSlider .MS-controls .MS-left{
+        left: 30% !important;
+    }
+    #calendarSlider .MS-controls .MS-right{
+        right: 30% !important;
+    }
+    .calendar .day {
+        font-size: 18px !important;
+    }
+}
+@media (max-width: 765px){
+    #calendarSlider .MS-controls button {
+        top: 0.5% !important;
+    }
+    #calendarSlider .MS-controls .MS-left{
+        left: 20% !important;
+    }
+    #calendarSlider .MS-controls .MS-right{
+        right: 20% !important;
+    }
+}
+
+.calendar .row{
+    margin: 0;
+}
+.calendar .frame{
+    color: #2e1503;
+    border: 1px solid #594537;
+    padding: 1% 2%;
+}
+.calendar .day{
+    text-transform: uppercase;
+    font-family: 'font-medium';
+    font-weight: 100;
+    position: relative;
+    font-size: 20px;
+}
+.calendar .index{
+    background-color: #cff0cc;
+    position: absolute;
+    padding: 1% 7%;
+    right: 5%;
+    bottom: 23%;
+}
+.calendar .col{
+    padding-right: 5px;
+    padding-left: 15px;
+}
+.calendar .schedules{
+    border: 1px solid #594537;
+    padding: 1% 0.5% 2% 1%;
+}
+.calendar .today{
+    background-color: rgba(250,209,220,0.5);
+}
+.calendar .card{
+    border-radius: 0;
+    margin-top: 10%;
+    border: 0;
+    border-left: 7px solid #cff0cc;
+}
+.calendar .card:hover{
+    cursor: pointer;
+}
+.calendar .card-body{
+    padding: 5% 3%!important;
+}
+.calendar .card-title{
+    text-transform: uppercase;
+    color: #2e1503;
+    font-weight: 100;
+    font-family: 'font-medium';
+    font-size: 16px;
+}
+.calendar .time{
+    color: #bf5000;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 13px;
+}
+#calendarSlider {
+    position: relative;
+}
+#calendarSlider .MS-content {
+    white-space: nowrap;
+    overflow: hidden;
+}
+#calendarSlider .MS-content .item{
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    overflow: hidden;
+    height: 100%;
+    white-space: normal;
+    padding: 0 10px;
+}
+#calendarSlider .MS-content .item h4{
+    color: #2e1503;
+    padding: 2% 0;
+}
+#calendarSlider .MS-controls button {
+    color: #2e1503;
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    outline: 0;
+    top: 3%;
+    transition: 0.15s linear;
+    z-index: 2;
+}
+#calendarSlider .MS-controls button:hover {
+    color: #bf5000;
+}
+#calendarSlider .MS-controls .MS-right {
+    right: 10%;
+}
+#calendarSlider .MS-controls .MS-left {
+    left: 10%;
+}
+#calendarSlider .MS-controls .icon-calendar {
+    right: 0;
+}
+.popup-title{
+    text-transform: uppercase;
+    color: #2e1503;
+    font-family: 'font-medium';
+    font-weight: 100;
+    font-size: 20px;
+}
+.popup-time{
+    color: #bf5000;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.calendar .modal-content{
+    padding: 5% 5% 3%;
+    border-radius: 0 !important;
+    background-color: #f5f2f0 !important;
+}
+.calendar .modal-content h6{
+    color: #2e1503;
+    font-family: 'font-medium';
+    font-weight: 100;
+}
+.calendar .modal-content .paragraph{
+    color: #2e1503;
+    font-weight: 600;
+}
+.calendar .modal-content .share{
+    border: 0;
+    background: none;
+}

@@ -14,7 +14,8 @@ class CreateInterfacesTable extends Migration
     public function up()
     {
         Schema::create('interfaces', function (Blueprint $table) {
-            $table->string('item_id',100)->primary();
+            $table->id();
+            $table->string('item_id',100)->unique();
             $table->longText('item_value');
             $table->foreignId('pages_id')->constrained('pages');
             $table->timestamp('created_at')->useCurrent();

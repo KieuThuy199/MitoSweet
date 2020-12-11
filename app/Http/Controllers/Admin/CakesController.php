@@ -15,13 +15,21 @@ class CakesController extends Controller
         $size = DB::table('cake_sizes')->get();
         return view('admin.cakes',['cake' => $cake, 'size' => $size, 'type' => $type]);
     }
+
     public function add(Request $request){
         if($request->isMethod('post')){
             DB::beginTransaction();
             try{
                 $cake              = new Cakes();
-                $img               = $request->filepath;
-                $img               = str_replace('http://localhost','', $img);;
+
+                $db  = [];
+                $db  = explode(',', $request->filepath); // file là chuỗi -> mảng
+                // bỏ local ở từng tp của mảng
+                for ($i=0; $i < count($db); $i++) {
+                    $db[$i] = str_replace('http://localhost','', $db[$i]);
+                }
+                $img = implode(',', $db); // lưu về dạng mảng
+
                 $cake->img         = $img;
                 $cake->title       = $request->title;
                 $cake->summary     = $request->summary;
@@ -50,11 +58,18 @@ class CakesController extends Controller
         }
         return view('admin.cakes');
     }
+
     public function edit(Request $request, $id){
         $cake = Cakes::find($id);
         if($request->isMethod('post')){
-            $img               = $request->filepath;
-            $img               = str_replace('http://localhost','', $img);;
+            $db  = [];
+            $db  = explode(',', $request->filepath); // file là chuỗi -> mảng
+            // bỏ local ở từng tp của mảng
+            for ($i=0; $i < count($db); $i++) {
+                $db[$i] = str_replace('http://localhost','', $db[$i]);
+            }
+            $img = implode(',', $db); // lưu về dạng mảng
+
             $cake->img         = $img;
             $cake->title       = $request->title;
             $cake->summary     = $request->summary;
@@ -83,8 +98,7 @@ class CakesController extends Controller
         return redirect()->back()->with('status', 'Xóa bánh thành công!');
     }
 
-    public function deleteMul(Request $request)
-    {
+    public function deleteMul(Request $request){
         $ids = $request->ids;
         $ids = explode(',', $ids);
         foreach($ids as $id){

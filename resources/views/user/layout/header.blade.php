@@ -6,19 +6,18 @@
     <title>MitoSweets</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-    <link rel="icon" href='img/icon.png' type="image/icon type">
-    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+    <link rel="icon" href='{{ asset('img/icon.png') }}' type="image/icon type">
+    <link rel='stylesheet' type='text/css' media='screen' href='{{ asset('css/style.css') }}'>
 
-    <link rel='stylesheet' type='text/css' media='screen' href='css/bootstrap.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/bootstrap.min.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='{{ asset('css/bootstrap.css') }}'>
+    <link rel='stylesheet' type='text/css' media='screen' href='{{ asset('css/bootstrap.min.css') }}'>
 
     <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="js/bootstrap.min.js" rel="stylesheet"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}" rel="stylesheet"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
@@ -42,23 +41,23 @@
             </div>
             <div class="col-lg-4 col-4 logo_right_header">
                 <a href="#" class="text-black-50 nostyle">
-                   <img src="img/SEARCH.png" width="20px" height="20px">
+                   <img src="{{ asset('img/SEARCH.png') }}" width="20px" height="20px">
                 </a>
                &ensp;
                 <a href="shoppingcart.php" class=" text-black-50 nostyle">
-                    <img src="img/CART.png" width="20px" height="20px">
+                    <img src="{{ asset('img/CART.png') }}" width="20px" height="20px">
                 </a>
                &ensp;
 
                <a href="profile.php" class=" text-black-50 nostyle">
-                    <img src="img/USER.png" width="20px" height="20px">
+                    <img src="{{ asset('img/USER.png') }}" width="20px" height="20px">
                </a>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-4"></div>
             <div class="col-lg-4 box_logo_header">
-                <a href="index.php"><img src="img/MITO SWEETS.png" alt="Logo_main" width="300px"></a>
+                <a href="index.php"><img src="{{ asset('img/MITO SWEETS.png') }}" alt="Logo_main" width="300px"></a>
             </div>
             <div class="col-lg-4"></div>
         </div>
@@ -153,16 +152,16 @@
           </div>
           <div class="col-lg-2 col-2 logo_right_header">
               <a href="#" class="text-black-50 nostyle">
-                   <img src="img/SEARCH.png" width="20px" height="20px">
+                   <img src="{{ asset('img/SEARCH.png') }}" width="20px" height="20px">
                 </a>
                &ensp;
                 <a href="shoppingcart.php" class=" text-black-50 nostyle">
-                    <img src="img/CART.png" width="20px" height="20px">
+                    <img src="{{ asset('img/CART.png') }}" width="20px" height="20px">
                 </a>
                &ensp;
 
                <a href="profile.php" class=" text-black-50 nostyle">
-                    <img src="img/USER.png" width="20px" height="20px">
+                    <img src="{{ asset('img/USER.png') }}" width="20px" height="20px">
                </a>
           </div>
       </div>
@@ -208,20 +207,20 @@
           </nav>
           </div>
           <div class="col-lg-4 col-4 logo_768">
-            <a href="index.php"><img src="img/MITO SWEETS.png" alt="Logo_main" ></a>
+            <a href="index.php"><img src="{{ asset('img/MITO SWEETS.png') }}" alt="Logo_main" ></a>
           </div>
           <div class="col-lg-4 col-4 logo_right_header">
                <a href="#" class="text-black-50 nostyle">
-                   <img src="img/SEARCH.png" width="20px" height="20px">
+                   <img src="{{ asset('img/SEARCH.png') }}" width="20px" height="20px">
                 </a>
                &ensp;
                 <a href="shoppingcart.php" class=" text-black-50 nostyle">
-                    <img src="img/CART.png" width="20px" height="20px">
+                    <img src="{{ asset('img/CART.png') }}" width="20px" height="20px">
                 </a>
                &ensp;
 
                <a href="profile.php" class=" text-black-50 nostyle">
-                    <img src="img/USER.png" width="20px" height="20px">
+                    <img src="{{ asset('img/USER.png') }}" width="20px" height="20px">
                </a>
           </div>
       </div>

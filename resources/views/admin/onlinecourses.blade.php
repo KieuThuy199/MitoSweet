@@ -56,7 +56,11 @@
                         <label for="" class="required control-label">@lang('modules.online.content')</label>
                         <textarea class="detail" name="detail">{!! old('detail', $detail ?? '') !!}</textarea>
                         <label for="" class="required control-label">@lang('modules.online.level')</label>
-                        <select class="js-level form-control" name="level" id="level"></select>
+                        <select class="js-level form-control" name="level">
+                            @foreach ($level as $item)
+                                <option value="{{$item->id}}">{{$item->title}}</option>
+                            @endforeach
+                        </select>
                         <label for="" class="required control-label">@lang('modules.online.price')</label>
                         <input class="form-control" name="price" required>
                         <label for="" class="control-label">@lang('modules.online.promo_price')</label>
@@ -193,17 +197,6 @@
         var route_prefix = "laravel-filemanager";
         $('#btn-img').filemanager('image', {prefix: route_prefix});
         $('a#btn-edit-img').filemanager('image', {prefix: route_prefix});
-    </script>
-    <script>
-        $(function () {
-            $.ajax({
-                url: 'levels/select',
-                    type: 'get',
-                    success: function(data){
-                        $('#level').html(data);
-                    }
-            });
-        });
     </script>
 
 @endpush

@@ -6,3 +6,4 @@
 
 @include('user.layout.newsletter')
 @include('user.layout.footer')
+@stack('scripts')

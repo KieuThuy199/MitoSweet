@@ -82,8 +82,6 @@ return [
                 'video/mpeg-4',
                 'video/gif',
                 'video/wmv',
-                'application/pdf',
-                'text/plain',
             ],
         ],
     ],

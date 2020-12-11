@@ -98,6 +98,8 @@ Route::group(['namespace' => 'Admin'],
 
         // Giao diện
             Route::get('pages', 'InterfacesController@data');
+            Route::match(['get', 'post'],'pages/edit/{id}', 'InterfacesController@edit');
+
 });
 
 
@@ -111,6 +113,6 @@ Route::group(['prefix' => 'laravel-filemanager'], function () {
 Route::get('/user', function () {
     return view('user.index');
 });
-// Route::get('/schedules', function () {
-//     return view('user.schedules');
-// });
+Route::get('user/schedules', function () {
+    return view('user.classdetail');
+});

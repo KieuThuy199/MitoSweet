@@ -66,7 +66,7 @@
                         <label for="" class="required control-label">@lang('modules.cake.code')</label>
                         <input class="form-control" name="code" placeholder="VD: A123" required pattern="[A-Z]{1}[0-9]{3}">
                         <label for="" class="control-label d-block">@lang('modules.cake.size')</label>
-                        {{-- <input class="form-control" name="size"> --}}
+
                         @foreach ($size as $sizes)
                             <input type="checkbox" class="size" name="size[]" value="{{ $sizes->id }}">
                             {{$sizes->title}} &emsp;
@@ -123,7 +123,15 @@
             @foreach ($cake as $cakes)
             <tr>
                 <td class="btn-gr d-none"><input type="checkbox" class="check" name="delete[]" value="{{ $cakes->id }}"></td>
-                <td><img src="{{ $cakes->img }}" class="preview-img"></td>
+                {{-- <td>@foreach (explode(",", $cakes->img) as $item)
+                        <img src="{{ $item }}" class="preview-img">
+                    @endforeach
+                </td> --}}
+                <td>@php
+                        $db = explode(",", $cakes->img);
+                    @endphp
+                    <img src="{{ $db[0] }}" class="preview-img">
+                </td>
                 <td>{{ $cakes->title }}</td>
                 <td>@foreach ($type as $types)
                         @if ($cakes->cake_types == $types->id)
@@ -172,7 +180,11 @@
                                         </span>
                                         <input class="form-control thumbnail-edit" type="text" name="filepath" value="{{ $cakes->img }}">
                                     </div>
-                                    <div class="box-preview-img"><img src="{{ $cakes->img }}"></div>
+                                    <div class="box-preview-img edit-img">
+                                        @foreach (explode(",", $cakes->img) as $item)
+                                            <img src="{{ $item }}">
+                                        @endforeach
+                                    </div>
                                     <label for="" class="required control-label">@lang('modules.cake.name')</label>
                                     <input class="form-control" value="{{$cakes->title}}" name="title" required>
                                     <label for="" class="required control-label">@lang('modules.cake.summary')</label>
@@ -214,7 +226,7 @@
             @endforeach
         </tbody>
     </table>
-    {{$cake ?? ''->links('admin.layout.pagination')}}
+    {{$cake->links('admin.layout.pagination')}}
 </div>
 
 
