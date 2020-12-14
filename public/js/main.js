@@ -23,9 +23,21 @@ $('.reload').click(function() {
 $("#search").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#search-body tr").filter(function() {
-    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
 });
+// var table = $('#search-body');
+// $("#search").keyup(function()
+// {
+//     var keyword= $(this).val().toLowerCase();
+//     $("tr",table).each(function()
+//     {
+//         if($(this).text().toLowerCase().search(keyword) > -1)
+//             $(this).fadeIn();
+//         else
+//             $(this).fadeOut();
+//     });
+// });
 
 // thêm video
 $('.add-video').click(function(){

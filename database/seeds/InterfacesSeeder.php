@@ -64,17 +64,17 @@ class InterfacesSeeder extends Seeder
                 'pages_id'   => '1',
             ],
             [
-                'item_id'    => 'about-img',
-                'item_value' => 'a',
-                'pages_id'   => '1',
-            ],
-            [
                 'item_id'    => 'about-title',
                 'item_value' => 'a',
                 'pages_id'   => '1',
             ],
             [
                 'item_id'    => 'about-description',
+                'item_value' => 'a',
+                'pages_id'   => '1',
+            ],
+            [
+                'item_id'    => 'about-img',
                 'item_value' => 'a',
                 'pages_id'   => '1',
             ],

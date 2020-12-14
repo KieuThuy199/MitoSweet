@@ -5,12 +5,12 @@
 
         <div class="row">
             <div class="col-md-12 text-center mt-5 mb-3">
-                <img id="logo-footer" src="img/MITO SWEETS.png">
+                <img id="logo-footer" src="{{ asset('img/MITO SWEETS.png') }}">
             </div>
 
         </div>
 
-        <div class="row">
+        {{-- <div class="row">
 
             <div class="col-md-3 col-sm-6 mx-auto ">
 
@@ -88,9 +88,43 @@
 
             </div>
 
+        </div> --}}
+        <div class="row">
+            <div class="col-lg-12 ">
+                <nav class=" navbar navbar-expand-lg navbar-light " >
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="center collapse navbar-collapse justify-content-center" id="navbarNav">
+                      <ul class="navbar-nav" id="navbar-nav">
+                          <li class="nav-item" >
+                            <a class="nav-link " href="#">@lang('modules.menuuser.onlineclass')<span class="sr-only">(current)</span></a>
+                          </li>
+                          <li class="nav-item" >
+                            <a class="nav-link" href="handsonclass.php">@lang('modules.menuuser.handsonclass')</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link"  href="order.php">@lang('modules.menuuser.cakeorder')</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="news.php"  id="menu_news">@lang('modules.menuuser.news')</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="schedules.php" id="menu_schedules">@lang('modules.menuuser.schedules')</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link"  href="freetutorials.php" id="menu_free_tutorials">@lang('modules.menuuser.freetutorials')</a>
+                          </li>
+                          <li class="nav-item"  >
+                            <a class="nav-link"  href="contacts.php" id="menu_contacts">@lang('modules.menuuser.contacts')</a>
+                          </li>
+                      </ul>
+                    </div>
+                </nav>
+            </div>
         </div>
 
-        <hr class="w-100 hr mt-4 mb-0">
+        <hr class="w-100 hr m-0">
 
         <!-- Copyright -->
         <div class="footer-copyright pt-3">
@@ -113,5 +147,30 @@
     </div>
 </footer>
 <!-- Footer -->
+    <a type="button" class="scroll-top"><img src="img/back.png" width="70%"></a>
+    <script>
+      $(document).ready(function ($) {
+        if ($(window).scrollTop() > 200) {
+                    $('.scroll-top').fadeIn();
+              } else {
+                    $('.scroll-top').fadeOut();
+              }
+
+        $(window).scroll(function () {
+                if ($(this).scrollTop() > 200) {
+            $('.scroll-top').fadeIn();
+                } else {
+                      $('.scroll-top').fadeOut();
+                }
+        });
+
+        $('.scroll-top').click(function () {
+                $("html, body").animate({
+                      scrollTop: 0
+                }, 600);
+                return false;
+        });
+      });
+    </script>
 </body>
 </html>

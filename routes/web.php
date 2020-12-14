@@ -109,10 +109,15 @@ Route::group(['namespace' => 'Admin'],
 Route::group(['prefix' => 'laravel-filemanager'], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
-
+Route::group(['namespace' => 'User'],
+    function () {
+        Route::get('index', 'PagesController@data');
+        Route::get('offline-class', 'PagesController@offline');
+        Route::get('offline-class/{id}', 'PagesController@offdetail');
+});
 Route::get('/user', function () {
     return view('user.index');
 });
 Route::get('user/schedules', function () {
-    return view('user.classdetail');
+    return view('user.onlineclass');
 });

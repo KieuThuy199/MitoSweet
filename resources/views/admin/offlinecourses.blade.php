@@ -120,7 +120,11 @@
             @foreach ($offline as $courses)
             <tr>
                 <td class="btn-gr d-none"><input type="checkbox" class="check" name="delete[]" value="{{ $courses->id }}"></td>
-                <td><img src="{{ $courses->img }}" class="preview-img"></td>
+                <td>@php
+                        $db = explode(",", $courses->img);
+                    @endphp
+                    <img src="{{ $db[0] }}" class="preview-img">
+                </td>
                 <td>{{ $courses->title }}</td>
                 <td>@foreach ($level as $levels)
                         @if ($courses->level == $levels->id)
@@ -162,7 +166,11 @@
                                         </span>
                                         <input class="form-control thumbnail-edit" type="text" name="filepath" value="{{ $courses->img }}">
                                     </div>
-                                    <div class="box-preview-img"><img src="{{ $courses->img }}"></div>
+                                    <div class="box-preview-img edit-img">
+                                        @foreach (explode(",", $courses->img) as $item)
+                                            <img src="{{ $item }}">
+                                        @endforeach
+                                    </div>
                                     <label for="" class="required control-label">@lang('modules.online.name')</label>
                                     <input class="form-control" value="{{$courses->title}}" name="title" required>
                                     <label for="" class="required control-label">@lang('modules.online.summary')</label>
@@ -200,7 +208,7 @@
             @endforeach
         </tbody>
     </table>
-    {{$offline ?? ''->links('admin.layout.pagination')}}
+    {{ $offline ->links('admin.layout.pagination')}}
 </div>
 
 

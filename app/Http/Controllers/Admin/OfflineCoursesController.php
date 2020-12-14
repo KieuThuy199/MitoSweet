@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class OfflineCoursesController extends Controller
 {
     public function data(){
-        $course = DB::table('offline_courses')->paginate(5);
+        $course = DB::table('offline_courses')->orderByDesc('id')->paginate(5);
         $level  = DB::table('course_levels')->get();
         return view('admin.offlinecourses',['offline' => $course, 'level' => $level]);
     }
@@ -20,8 +20,15 @@ class OfflineCoursesController extends Controller
             DB::beginTransaction();
             try{
                 $course              = new OfflineCourses();
-                $img                 = $request->filepath;
-                $img                 = str_replace('http://localhost','', $img);;
+
+                $db  = [];
+                $db  = explode(',', $request->filepath); // file là chuỗi -> mảng
+                // bỏ local ở từng tp của mảng
+                for ($i=0; $i < count($db); $i++) {
+                    $db[$i] = str_replace('http://localhost','', $db[$i]);
+                }
+                $img = implode(',', $db); // lưu về dạng mảng
+
                 $course->img         = $img;
                 $course->title       = $request->title;
                 $course->summary     = $request->summary;
@@ -48,8 +55,14 @@ class OfflineCoursesController extends Controller
     public function edit(Request $request, $id){
         $course = OfflineCourses::find($id);
         if($request->isMethod('post')){
-            $img                 = $request->filepath;
-            $img                 = str_replace('http://localhost','', $img);;
+            $db  = [];
+            $db  = explode(',', $request->filepath); // file là chuỗi -> mảng
+            // bỏ local ở từng tp của mảng
+            for ($i=0; $i < count($db); $i++) {
+                $db[$i] = str_replace('http://localhost','', $db[$i]);
+            }
+            $img = implode(',', $db); // lưu về dạng mảng
+
             $course->img         = $img;
             $course->title       = $request->title;
             $course->summary     = $request->summary;

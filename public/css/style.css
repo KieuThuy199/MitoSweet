@@ -98,8 +98,6 @@ header{
     margin-bottom: 15px;
 }
 
-
-
 .thanh_phan_cach{
     width: 100%;
     height: 1px;
@@ -194,8 +192,6 @@ header{
     }
 }
 
-
-
 /********* index *********/
 .box_section_1{
     margin-top: 12vw;
@@ -207,7 +203,7 @@ header{
 .title_main_section{
     line-height: 1.7;
     padding-left: 20%;
-    font-size: 56px;
+    font-size: 3.2rem;
     text-transform: uppercase;
 }
 .button_section{
@@ -239,12 +235,12 @@ header{
     margin-left: -15px;
     margin-right: -15px;
 }
-.computer{
+/* .computer{
     display: block;
-}
-.phone{
+} */
+/* .phone{
     display: none;
-}
+} */
 .khoancach{
     display: block;
     height: 30px;
@@ -278,11 +274,11 @@ header{
 .background_section_2 a:hover,.background_section_3 a:hover,.background_section_4 a:hover{
     text-decoration: none;
  }
-.background_section_2_big{
+/* .background_section_2_big{
     background: url(../img/img_section_backgroud_big.jpg) no-repeat;
     background-position: center;
     background-size: cover;
-}
+} */
 .title_main_section_2,.title_main_section_3,.title_main_section_4{
    color: white;
    font-family: "font-medium";
@@ -310,15 +306,27 @@ header{
     color:#2e1503 ;
     font-weight: 600;
 }
-.background_section_3_big{
+/* .background_section_3_big{
     background: url(../img/img_section_3_backgroud_big.jpg) no-repeat;
     background-position: center;
     background-size: cover;
-}
+} */
 .background_section_4_big{
     background: url(../img/img_section_4_backgroud_big.jpg) no-repeat;
     background-position: center;
     background-size: cover;
+}
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 0;
+    z-index: 99;
+    border: 0;
+    background: none;
+}
+.scroll-top:active {
+    border: 0;
+    background: none;
 }
 #myBtn {
     display: none;
@@ -437,10 +445,10 @@ figure{
     font-style: italic;
 }
 @media(max-width:768px){
-    .computer{
+    /* .computer{
         display: none;
-    }
-    .phone{
+    } */
+    /* .phone{
         display: block;
     }
     .phone .title_section{
@@ -452,14 +460,14 @@ figure{
     }
     .phone .box_section_1 {
         margin: 1% 0;
-    }
+    } */
     .title_main_section,.title_section,.title_section_1,.title_main_section_1{
         padding-left: 10%;
     }
-    .phone .title_main_section{
+    /* .phone .title_main_section{
        font-size: 36px;
         padding-left: 5%;
-    }
+    } */
     .button_section{
         padding: 4px 30px;
         font-size: 15px;
@@ -789,7 +797,7 @@ footer h5{
 }
 .hover_title_section_7 a{
     font-family: "font-medium";
-    font-size: 13px;
+    font-size: 1rem;
     color: #482e1d;
     padding: 10px;
     background:  rgb(240, 207, 196, 0.9);

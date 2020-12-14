@@ -167,7 +167,6 @@
       </div>
       <div class="row">
           <div class="col-lg-12 ">
-
           </div>
       </div>
     </header>
@@ -227,7 +226,7 @@
     </header>
 
     {{-- scrollTop --}}
-    <button onclick="topFunction()" id="myBtn" title="Go to top">
+    {{-- <button onclick="topFunction()" id="myBtn" title="Go to top">
         <img src="img/back.png" width="70%">
     </button>
     <script>
@@ -247,7 +246,7 @@
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
         }
-    </script>
+    </script> --}}
 
     <script>
         $(document).scroll(function () {
