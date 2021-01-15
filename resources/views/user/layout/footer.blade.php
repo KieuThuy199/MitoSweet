@@ -5,90 +5,11 @@
 
         <div class="row">
             <div class="col-md-12 text-center mt-5 mb-3">
-                <img id="logo-footer" src="{{ asset('img/MITO SWEETS.png') }}">
+                <a href="{{ route('index') }}"><img id="logo-footer" src="{{ asset('img/MITO SWEETS.png') }}"></a>
             </div>
 
         </div>
 
-        {{-- <div class="row">
-
-            <div class="col-md-3 col-sm-6 mx-auto ">
-
-                <h5 class="text-uppercase mt-4 mb-4" style="font-family: 'font-medium';">Explore</h5>
-
-                <ul class="list-unstyled">
-                    <li><a href="#!">Justo</a></li>
-                    <li><a href="#!">Rhoncus</a></li>
-                    <li><a href="#!">Imperdiet</a></li>
-                    <li><a href="#!">Venenatis</a></li>
-                    <li><a href="#!">Nullam</a></li>
-                    <li><a href="#!">Dictum</a></li>
-                    <li><a href="#!">Pretium</a></li>
-                    <li><a href="#!">Integer </a></li>
-                    <li><a href="#!">Tincidunt</a></li>
-                    <li><a href="#!">Dapibus</a></li>
-                </ul>
-
-            </div>
-
-            <div class="col-md-3 col-sm-6 mx-auto ">
-
-                <h5 class="text-uppercase mt-4 mb-4" style="font-family: 'font-medium';">Online class</h5>
-
-                <ul class="list-unstyled">
-                    <li><a href="#!">Justo</a></li>
-                    <li><a href="#!">Rhoncus</a></li>
-                    <li><a href="#!">Imperdiet</a></li>
-                    <li><a href="#!">Venenatis</a></li>
-                    <li><a href="#!">Nullam</a></li>
-                    <li><a href="#!">Dictum</a></li>
-                    <li><a href="#!">Pretium</a></li>
-                    <li><a href="#!">Integer </a></li>
-                    <li><a href="#!">Tincidunt</a></li>
-                    <li><a href="#!">Dapibus</a></li>
-                </ul>
-
-            </div>
-
-            <div class="col-md-3 col-sm-6 mx-auto ">
-
-                <h5 class="text-uppercase mt-4 mb-4" style="font-family: 'font-medium';">Offline class</h5>
-
-                <ul class="list-unstyled">
-                    <li><a href="#!">Justo</a></li>
-                    <li><a href="#!">Rhoncus</a></li>
-                    <li><a href="#!">Imperdiet</a></li>
-                    <li><a href="#!">Venenatis</a></li>
-                    <li><a href="#!">Nullam</a></li>
-                    <li><a href="#!">Dictum</a></li>
-                    <li><a href="#!">Pretium</a></li>
-                    <li><a href="#!">Integer </a></li>
-                    <li><a href="#!">Tincidunt</a></li>
-                    <li><a href="#!">Dapibus</a></li>
-                </ul>
-
-            </div>
-
-            <div class="col-md-3 col-sm-6 mx-auto ">
-
-                <h5 class="text-uppercase mt-4 mb-4" style="font-family: 'font-medium';">Services</h5>
-
-                <ul class="list-unstyled">
-                    <li><a href="#!">Justo</a></li>
-                    <li><a href="#!">Rhoncus</a></li>
-                    <li><a href="#!">Imperdiet</a></li>
-                    <li><a href="#!">Venenatis</a></li>
-                    <li><a href="#!">Nullam</a></li>
-                    <li><a href="#!">Dictum</a></li>
-                    <li><a href="#!">Pretium</a></li>
-                    <li><a href="#!">Integer </a></li>
-                    <li><a href="#!">Tincidunt</a></li>
-                    <li><a href="#!">Dapibus</a></li>
-                </ul>
-
-            </div>
-
-        </div> --}}
         <div class="row">
             <div class="col-lg-12 ">
                 <nav class=" navbar navbar-expand-lg navbar-light " >
@@ -98,25 +19,25 @@
                     <div class="center collapse navbar-collapse justify-content-center" id="navbarNav">
                       <ul class="navbar-nav" id="navbar-nav">
                           <li class="nav-item" >
-                            <a class="nav-link " href="#">@lang('modules.menuuser.onlineclass')<span class="sr-only">(current)</span></a>
+                            <a class="nav-link " href="{{ route('online') }}">@lang('modules.menuuser.onlineclass')</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link"  href="{{ route('order') }}">@lang('modules.menuuser.cakeorder')</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="{{ route('news') }}"  id="menu_news">@lang('modules.menuuser.news')</a>
+                          </li>
+                          {{-- <li class="nav-item">
+                            <a class="nav-link" href="#" id="menu_schedules">@lang('modules.menuuser.schedules')</a>
+                          </li> --}}
+                          <li class="nav-item">
+                            <a class="nav-link"  href="{{ route('free-tutorial') }}" id="menu_free_tutorials">@lang('modules.menuuser.freetutorials')</a>
                           </li>
                           <li class="nav-item" >
-                            <a class="nav-link" href="handsonclass.php">@lang('modules.menuuser.handsonclass')</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"  href="order.php">@lang('modules.menuuser.cakeorder')</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="news.php"  id="menu_news">@lang('modules.menuuser.news')</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="schedules.php" id="menu_schedules">@lang('modules.menuuser.schedules')</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"  href="freetutorials.php" id="menu_free_tutorials">@lang('modules.menuuser.freetutorials')</a>
+                            <a class="nav-link" href="{{ route('about') }}">Giới thiệu</a>
                           </li>
                           <li class="nav-item"  >
-                            <a class="nav-link"  href="contacts.php" id="menu_contacts">@lang('modules.menuuser.contacts')</a>
+                            <a class="nav-link"  href="{{ route('contact') }}" id="menu_contacts">@lang('modules.menuuser.contacts')</a>
                           </li>
                       </ul>
                     </div>
@@ -132,14 +53,29 @@
                 <p class="col-md-10 col-sm-8 col-7">© Copyright 2020 by <span style="font-family: 'font-medium';">MITO SWEETS</span></p>
                 <div class="col-md-2 col-sm-4 col-5">
                     <a class="footer_lienhe" href="#">
-                        <img src="img/YOUTUBE.png" width="20%">
+                        <img src="{{ asset('img/YOUTUBE.png') }}" width="20%">
                     </a>
                     <a class="footer_lienhe" href="#">
-                        <img src="img/FACEBOOK.png" width="20%">
+                        <img src="{{ asset('img/FACEBOOK.png') }}" width="20%">
                     </a>
                     <a class=" footer_lienhe" href="#">
-                        <img src="img/INSTAGRAM.png" width="20%">
+                        <img src="{{ asset('img/INSTAGRAM.png') }}" width="20%">
                     </a>
+                    {{-- @foreach ($interface as $item)
+                        @if (strstr($item->item_id,'youtube'))
+                            <a class="footer_lienhe" href="{{$item->item_value}}">
+                                <img src="{{ asset('img/YOUTUBE.png') }}" width="20%">
+                            </a>
+                        @elseif(strstr($item->item_id,'facebook'))
+                            <a class="footer_lienhe" href="{{$item->item_value}}">
+                                <img src="{{ asset('img/FACEBOOK.png') }}" width="20%">
+                            </a>
+                        @elseif(strstr($item->item_id,'instagram'))
+                            <a class=" footer_lienhe" href="{{$item->item_value}}">
+                                <img src="{{ asset('img/INSTAGRAM.png') }}" width="20%">
+                            </a>
+                        @endif
+                    @endforeach --}}
                 </div>
             </div>
         </div>
@@ -147,7 +83,7 @@
     </div>
 </footer>
 <!-- Footer -->
-    <a type="button" class="scroll-top"><img src="img/back.png" width="70%"></a>
+    <a type="button" class="scroll-top"><img src="{{ asset('img/back.png') }}" width="70%"></a>
     <script>
       $(document).ready(function ($) {
         if ($(window).scrollTop() > 200) {
@@ -172,5 +108,32 @@
         });
       });
     </script>
+    <!-- Messenger -->
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+            xfbml            : true,
+            version          : 'v9.0'
+            });
+        };
+
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+<!-- Your Chat Plugin code -->
+    <div class="fb-customerchat"
+        attribution=setup_tool
+        page_id="103818661665604"
+        theme_color="#fa3c4c"
+        logged_in_greeting="Chào mừng bạn đến với MitoSweets.Demo"
+        logged_out_greeting="Chào mừng bạn đến với MitoSweets.Demo">
+    </div>
 </body>
 </html>

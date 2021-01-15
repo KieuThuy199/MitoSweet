@@ -68,7 +68,7 @@
                         <label for="" class="required control-label">@lang('modules.online.lesson')</label>
                         <input class="form-control" name="lesson" required>
                         <label for="" class="control-label">@lang('modules.online.trailer')</label>
-                        <input class="form-control" name="trailer" required>
+                        <input class="form-control" name="trailer">
                         <label for="" class="control-label">@lang('modules.online.video')</label>
                         <div class="form-add-video" ></div>
 
@@ -124,9 +124,18 @@
             @foreach ($online as $courses)
             <tr>
                 <td class="btn-gr d-none"><input type="checkbox" class="check" name="delete[]" value="{{ $courses->id }}"></td>
-                <td><img src="{{ $courses->img }}" class="preview-img"></td>
+                <td>@php
+                        $db = explode(",", $courses->img);
+                    @endphp
+                    <img src="{{ $db[0] }}" class="preview-img">
+                </td>
                 <td>{{ $courses->title }}</td>
-                <td>{{ $courses->level }}</td>
+                <td>@foreach ($level as $levels)
+                        @if ($courses->level == $levels->id)
+                            {{ $levels->title }}
+                        @endif
+                    @endforeach
+                </td>
                 <td>{{ $courses->lesson }}</td>
                 <td>{{ $courses->price }}</td>
                 <td>{{ $courses->created_at }}</td>
@@ -159,16 +168,48 @@
                                             Chọn tệp:
                                             </a>
                                         </span>
-                                        {{-- <input class="form-control thumbnail-edit" type="text" name="filepath" value="{!! old('img', $courses->img) !!}"> --}}
                                         <input class="form-control thumbnail-edit" type="text" name="filepath" value="{{ $courses->img }}">
                                     </div>
-                                    <div class="box-preview-img edit-img"><img src="{{ $courses->img }}"></div>
-                                    <label for="" class="required control-label">@lang('modules.courses.name')</label>
+                                    <div class="box-preview-img edit-img">
+                                        @foreach (explode(",", $courses->img) as $item)
+                                            <img src="{{ $item }}">
+                                        @endforeach
+                                    </div>
+                                    <label for="" class="required control-label">@lang('modules.online.name')</label>
                                     <input class="form-control" value="{{$courses->title}}" name="title" required>
-                                    <label for="" class="required control-label">@lang('modules.courses.summary')</label>
+                                    <label for="" class="required control-label">@lang('modules.online.summary')</label>
                                     <input class="form-control" value="{{$courses->summary}}" name="summary" required>
-                                    <label for="" class="required control-label">@lang('modules.courses.content')</label>
+                                    <label for="" class="required control-label">@lang('modules.online.content')</label>
                                     <textarea class="edit-detail" name="detail">{!! old('detail', $courses->detail) !!}</textarea>
+                                    <label for="" class="required control-label">@lang('modules.online.level')</label>
+                                    <select class="js-level form-control" name="level">
+                                        @foreach ($level as $item)
+                                            @if ($courses->level == $item->id)
+                                                <option selected value="{{$item->id}}">{{$item->title}}</option>
+                                            @else
+                                                <option value="{{$item->id}}">{{$item->title}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                    <label for="" class="required control-label">@lang('modules.online.price')</label>
+                                    <input class="form-control" value="{{$courses->price}}" name="price" required>
+                                    <label for="" class="control-label">@lang('modules.online.promo_price')</label>
+                                    <input class="form-control" value="{{$courses->promo_price}}" name="promo">
+                                    <label for="" class="required control-label">@lang('modules.online.lesson')</label>
+                                    <input class="form-control" value="{{$courses->lesson}}" name="lesson" required>
+                                    <label for="" class="control-label">@lang('modules.online.trailer')</label>
+                                    <input class="form-control" value="{{$courses->trailer}}" name="trailer">
+                                    <label for="" class="control-label">@lang('modules.online.video')</label>
+                                    <div class="form-add-video">
+                                        @foreach (explode(",", $courses->video) as $item)
+                                            <div class="video">
+                                                <textarea class="form-control" name="video[]" placeholder="Đường link video...">{{$item}}</textarea>
+                                                <hr>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    <a class="d-block add-video" style="font-family: font-medium; color:2e1503; cursor: pointer;">Thêm...</a>
+
                                     <button class="btn-change">@lang('modules.changeinfor.confirm')</button>
                                     <button class="btn-back" data-dismiss="modal">@lang('modules.back')</button>
                                 </form>
@@ -194,9 +235,8 @@
     <script type="text/javascript" src="..\js\upload.js"></script>
     <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
     <script>
-        var route_prefix = "laravel-filemanager";
-        $('#btn-img').filemanager('image', {prefix: route_prefix});
-        $('a#btn-edit-img').filemanager('image', {prefix: route_prefix});
+        $('#btn-img').filemanager('image');
+        $('a#btn-edit-img').filemanager('image');
     </script>
 
 @endpush

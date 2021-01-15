@@ -26,13 +26,13 @@
 
 <body class="bg-login">
     <section class="container">
-        <form action="" class="form-login">
+        <form action="{{ url('resetpass') }}" class="form-login">
             <h2>@lang('modules.dashboard.dashboard-title')</h2>
             <h5>@lang('modules.dashboard.forgot')</h5>
-            <input type="email" class="form-control" placeholder="Nhập email của bạn" >
+            <input type="email" class="form-control" name='email' placeholder="Nhập email của bạn" >
 
-            <a href="#" class="signin_signin">Yêu cầu</a>
-            <a href="#"><i class="fas fa-undo"></i>Trở về</a>
+            <button type="submit" class="signin_signin">Yêu cầu</button>
+            <a href="/login"><i class="fas fa-undo"></i>Trở về</a>
         </form>
     </section>
 

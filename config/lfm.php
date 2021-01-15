@@ -65,6 +65,7 @@ return [
             'valid_mime'   => [
                 'image/jpeg',
                 'image/pjpeg',
+                'image/jpg',
                 'image/png',
                 'image/gif',
                 'image/svg+xml',
@@ -134,6 +135,7 @@ return [
     'raster_mimetypes'         => [
         'image/jpeg',
         'image/pjpeg',
+        'image/jpg',
         'image/png',
     ],
 

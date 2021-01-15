@@ -1,6 +1,5 @@
 @extends('admin.layout.main')
 {{-- @push('css')
-
 @endpush --}}
 
 @section('header-body')
@@ -65,8 +64,9 @@
                         </select>
                         <label for="" class="required control-label">@lang('modules.cake.code')</label>
                         <input class="form-control" name="code" placeholder="VD: A123" required pattern="[A-Z]{1}[0-9]{3}">
+                        <label for="" class="required control-label">Giá cho size nhỏ nhất: </label>
+                        <input class="form-control" name="price" required>
                         <label for="" class="control-label d-block">@lang('modules.cake.size')</label>
-
                         @foreach ($size as $sizes)
                             <input type="checkbox" class="size" name="size[]" value="{{ $sizes->id }}">
                             {{$sizes->title}} &emsp;
@@ -115,6 +115,7 @@
             <th scope="col">Loại bánh</th>
             <th scope="col">Mã bánh</th>
             <th scope="col">Kích thước</th>
+            <th scope="col">Giá sản phẩm</th>
             <th scope="col">Thời gian tạo</th>
             <th scope="col">Chức năng</th>
         </tr>
@@ -123,10 +124,6 @@
             @foreach ($cake as $cakes)
             <tr>
                 <td class="btn-gr d-none"><input type="checkbox" class="check" name="delete[]" value="{{ $cakes->id }}"></td>
-                {{-- <td>@foreach (explode(",", $cakes->img) as $item)
-                        <img src="{{ $item }}" class="preview-img">
-                    @endforeach
-                </td> --}}
                 <td>@php
                         $db = explode(",", $cakes->img);
                     @endphp
@@ -144,6 +141,14 @@
                         @foreach (explode(",", $cakes->cake_sizes) as $item)
                             @if ($item == $sizes->id)
                                 {{ $sizes->title }}<br>
+                            @endif
+                        @endforeach
+                    @endforeach
+                </td>
+                <td>@foreach ($size as $sizes)
+                        @foreach (explode(",", $cakes->cake_sizes) as $item)
+                            @if ($item == $sizes->id)
+                                {{ ($cakes->price)*($sizes->heso) }}₫<br>
                             @endif
                         @endforeach
                     @endforeach
@@ -203,6 +208,8 @@
                                     </select>
                                     <label for="" class="required control-label">@lang('modules.cake.code')</label>
                                     <input class="form-control" value="{{$cakes->code}}" name="code" placeholder="VD: A123" required pattern="[A-Z]{1}[0-9]{3}">
+                                    <label for="" class="required control-label">Giá cho size nhỏ nhất: </label>
+                                    <input class="form-control" value="{{$cakes->price}}" name="price" required>
                                     <label for="" class="control-label d-block">@lang('modules.cake.size')</label>
                                     @foreach ($size as $sizes)
                                         {{-- kiểm tra g/trị $sizes->id có trong mảng explode(",", $cakes->cake_sizes) hay k? --}}
@@ -239,8 +246,8 @@
     <script type="text/javascript" src="..\js\upload.js"></script>
     <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
     <script>
-        var route_prefix = "laravel-filemanager";
-        $('#btn-img').filemanager('image', {prefix: route_prefix});
-        $('a#btn-edit-img').filemanager('image', {prefix: route_prefix});
+        $('#btn-img').filemanager('image');
+        $('a#btn-edit-img').filemanager('image');
     </script>
+
 @endpush

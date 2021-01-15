@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class CakesController extends Controller
 {
     public function data(){
-        $cake = DB::table('cakes')->paginate(5);
+        $cake = DB::table('cakes')->orderByDesc('id')->paginate(5);
         $type = DB::table('cake_types')->get();
         $size = DB::table('cake_sizes')->get();
         return view('admin.cakes',['cake' => $cake, 'size' => $size, 'type' => $type]);
@@ -38,6 +38,7 @@ class CakesController extends Controller
                 // $type              = CakeTypes::select('id')->where('title', $request->type)->first();
                 $cake->cake_types  = $request->type;
                 $cake->code        = $request->code;
+                $cake->price       = $request->price;
 
                 if ($request->size != '') {
                     $size          = implode(",", $request->size); // Thêm vào chuỗi
@@ -78,6 +79,7 @@ class CakesController extends Controller
             // $type              = CakeTypes::select('id')->where('title', $request->type)->first();
             $cake->cake_types  = $request->type;
             $cake->code        = $request->code;
+            $cake->price       = $request->price;
 
             if ($request->size != '') {
                 $size          = implode(",", $request->size);

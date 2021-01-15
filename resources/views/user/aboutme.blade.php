@@ -4,8 +4,8 @@
         <div class="container mt-3">
             <nav aria-label="breadcrumb" >
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">About Me</li>
+                    <li class="breadcrumb-item"><a href="{{ route('index') }}">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Giới thiệu</li>
                 </ol>
             </nav>
         </div>
@@ -14,11 +14,20 @@
     <section class="about-content">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 mb-3">
-                    <h1>About me</h1>
+                <div class="col-lg-12">
+                    <h1>Giới thiệu</h1>
                 </div>
             </div>
             <div class="row">
+                <div class="col-lg-12">
+                    @foreach ($interface as $item)
+                        @if (strstr($item->item_id, 'about-content'))
+                            {!! $item->item_value !!}
+                        @endif
+                    @endforeach
+                </div>
+            </div>
+            {{-- <div class="row">
                 <div class="col-lg-8 col-md-8 col-12 paragraph" style="font-weight: 900">
                     <p>
                         Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.</p>
@@ -60,38 +69,22 @@
                         Phasellus consectetuer vestibulum elit. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc. Vestibulum fringilla pede sit amet augue. In turpis. Pellentesque posuere. Praesent turpis. Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis.
                     </p>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
 
     <section class="album my-5 ">
         <div class="container-fluid">
             <div class="row row-cols-5" id="my-img">
-                <div class="col">
-                    <figure class="row">
-                        <img src="img/01_MitoSweets_OnlineClass_20.jpg" width="100%">
-                    </figure>
-                </div>
-                <div class="col">
-                    <figure class="row">
-                        <img src="img/MitoSweets_Homepage_07.jpg" width="100%">
-                    </figure>
-                </div>
-                <div class="col">
-                    <figure class="row">
-                        <img src="img/MitoSweets_Homepage_09.jpg" width="100%">
-                    </figure>
-                </div>
-                <div class="col">
-                    <figure class="row">
-                        <img src="img/MitoSweets_Homepage_15.jpg" width="100%">
-                    </figure>
-                </div>
-                <div class="col">
-                    <figure class="row">
-                        <img src="img/MitoSweets_Homepage_18.jpg" width="100%">
-                    </figure>
-                </div>
+                @foreach ($interface as $item)
+                    @if (strstr($item->item_id, 'about-img'))
+                        <div class="col">
+                            <figure class="row">
+                                <img src="{{$item->item_value}}" width="100%">
+                            </figure>
+                        </div>
+                    @endif
+                @endforeach
             </div>
 
             <div class="modal modal-img">

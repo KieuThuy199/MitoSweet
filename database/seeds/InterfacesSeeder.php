@@ -34,21 +34,6 @@ class InterfacesSeeder extends Seeder
                 'pages_id'   => '1',
             ],
             [
-                'item_id'    => 'offline-banner',
-                'item_value' => 'a',
-                'pages_id'   => '1',
-            ],
-            [
-                'item_id'    => 'offline-title',
-                'item_value' => 'a',
-                'pages_id'   => '1',
-            ],
-            [
-                'item_id'    => 'offline-description',
-                'item_value' => 'a',
-                'pages_id'   => '1',
-            ],
-            [
                 'item_id'    => 'order-banner',
                 'item_value' => 'a',
                 'pages_id'   => '1',

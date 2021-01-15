@@ -44,12 +44,12 @@
                    <img src="{{ asset('img/SEARCH.png') }}" width="20px" height="20px">
                 </a>
                &ensp;
-                <a href="shoppingcart.php" class=" text-black-50 nostyle">
+                <a href="{{ route('cart-index') }}" class=" text-black-50 nostyle">
                     <img src="{{ asset('img/CART.png') }}" width="20px" height="20px">
                 </a>
                &ensp;
 
-               <a href="profile.php" class=" text-black-50 nostyle">
+               <a href="{{ route('signin') }}" class=" text-black-50 nostyle">
                     <img src="{{ asset('img/USER.png') }}" width="20px" height="20px">
                </a>
             </div>
@@ -57,7 +57,7 @@
         <div class="row">
             <div class="col-lg-4"></div>
             <div class="col-lg-4 box_logo_header">
-                <a href="index.php"><img src="{{ asset('img/MITO SWEETS.png') }}" alt="Logo_main" width="300px"></a>
+                <a href="{{ route('index') }}"><img src="{{ asset('img/MITO SWEETS.png') }}" alt="Logo_main" width="300px"></a>
             </div>
             <div class="col-lg-4"></div>
         </div>
@@ -78,25 +78,28 @@
                     <div class="center collapse navbar-collapse justify-content-center" id="navbarNav">
                       <ul class="navbar-nav" id="navbar-nav">
                           <li class="nav-item" >
-                            <a class="nav-link " href="#">@lang('modules.menuuser.onlineclass')<span class="sr-only">(current)</span></a>
+                            <a class="nav-link " href="{{ route('online') }}">@lang('modules.menuuser.onlineclass')</a>
+                          </li>
+                          {{-- <li class="nav-item" >
+                            <a class="nav-link" href="{{ route('offline') }}">@lang('modules.menuuser.handsonclass')</a>
+                          </li> --}}
+                          <li class="nav-item">
+                            <a class="nav-link"  href="{{ route('order') }}">@lang('modules.menuuser.cakeorder')</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="{{ route('news') }}"  id="menu_news">@lang('modules.menuuser.news')</a>
+                          </li>
+                          {{-- <li class="nav-item">
+                            <a class="nav-link" href="#" id="menu_schedules">@lang('modules.menuuser.schedules')</a>
+                          </li> --}}
+                          <li class="nav-item">
+                            <a class="nav-link"  href="{{ route('free-tutorial') }}" id="menu_free_tutorials">@lang('modules.menuuser.freetutorials')</a>
                           </li>
                           <li class="nav-item" >
-                            <a class="nav-link" href="handsonclass.php">@lang('modules.menuuser.handsonclass')</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"  href="order.php">@lang('modules.menuuser.cakeorder')</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="news.php"  id="menu_news">@lang('modules.menuuser.news')</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="schedules.php" id="menu_schedules">@lang('modules.menuuser.schedules')</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"  href="freetutorials.php" id="menu_free_tutorials">@lang('modules.menuuser.freetutorials')</a>
+                            <a class="nav-link" href="{{ route('about') }}">Giới thiệu</a>
                           </li>
                           <li class="nav-item"  >
-                            <a class="nav-link"  href="contacts.php" id="menu_contacts">@lang('modules.menuuser.contacts')</a>
+                            <a class="nav-link"  href="{{ route('contact') }}" id="menu_contacts">@lang('modules.menuuser.contacts')</a>
                           </li>
                       </ul>
                     </div>
@@ -108,15 +111,6 @@
     <header class="container-fluid scrollview" id="scrollview">
       <div class="row">
           <div class="col-lg-2 col-2 ">
-              <!-- <div class="dropdown box_language_header">
-                  <img src="img/qua dia cau.png" alt="qua_dia_cau" width="20px">
-                  <a class="dropdown-toggle nostyle black" href="#"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    English
-                  </a>
-                  <div class="dropdown-menu" >
-                    <a class="dropdown-item black" href="#">VietNamese</a>
-                  </div>
-              </div> -->
           </div>
           <div class="col-lg-8 col-8">
             <nav class=" navbar navbar-expand-lg navbar-light ">
@@ -126,25 +120,28 @@
               <div class="center collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item" >
-                      <a class="nav-link " href="#">@lang('modules.menuuser.onlineclass')<span class="sr-only">(current)</span></a>
+                      <a class="nav-link " href="{{ route('online') }}">@lang('modules.menuuser.onlineclass')</a>
+                    </li>
+                    {{-- <li class="nav-item" >
+                      <a class="nav-link" href="{{ route('offline') }}">@lang('modules.menuuser.handsonclass')</a>
+                    </li> --}}
+                    <li class="nav-item">
+                      <a class="nav-link"  href="{{ route('order') }}">@lang('modules.menuuser.cakeorder')</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ route('news') }}"  id="menu_news">@lang('modules.menuuser.news')</a>
+                    </li>
+                    {{-- <li class="nav-item">
+                      <a class="nav-link" href="#" id="menu_schedules">@lang('modules.menuuser.schedules')</a>
+                    </li> --}}
+                    <li class="nav-item">
+                      <a class="nav-link"  href="{{ route('free-tutorial') }}" id="menu_free_tutorials">@lang('modules.menuuser.freetutorials')</a>
                     </li>
                     <li class="nav-item" >
-                      <a class="nav-link" href="handsonclass.php">@lang('modules.menuuser.handsonclass')</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link"  href="order.php">@lang('modules.menuuser.cakeorder')</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="news.php"  id="menu_news">@lang('modules.menuuser.news')</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="schedules.php" id="menu_schedules">@lang('modules.menuuser.schedules')</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link"  href="freetutorials.php" id="menu_free_tutorials">@lang('modules.menuuser.freetutorials')</a>
-                    </li>
+                        <a class="nav-link" href="{{ route('about') }}">Giới thiệu</a>
+                      </li>
                     <li class="nav-item"  >
-                      <a class="nav-link"  href="contacts.php" id="menu_contacts">@lang('modules.menuuser.contacts')</a>
+                      <a class="nav-link"  href="{{ route('contact') }}" id="menu_contacts">@lang('modules.menuuser.contacts')</a>
                     </li>
                 </ul>
               </div>
@@ -155,12 +152,12 @@
                    <img src="{{ asset('img/SEARCH.png') }}" width="20px" height="20px">
                 </a>
                &ensp;
-                <a href="shoppingcart.php" class=" text-black-50 nostyle">
+                <a href="{{ route('cart-index') }}" class=" text-black-50 nostyle">
                     <img src="{{ asset('img/CART.png') }}" width="20px" height="20px">
                 </a>
                &ensp;
 
-               <a href="profile.php" class=" text-black-50 nostyle">
+               <a href="{{ route('signin') }}" class=" text-black-50 nostyle">
                     <img src="{{ asset('img/USER.png') }}" width="20px" height="20px">
                </a>
           </div>
@@ -181,44 +178,47 @@
               <div class="center collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item" >
-                      <a class="nav-link " href="#">@lang('modules.menuuser.onlineclass')<span class="sr-only">(current)</span></a>
+                      <a class="nav-link " href="{{ route('online') }}">@lang('modules.menuuser.onlineclass')</a>
+                    </li>
+                    {{-- <li class="nav-item" >
+                      <a class="nav-link" href="{{ route('offline') }}">@lang('modules.menuuser.handsonclass')</a>
+                    </li> --}}
+                    <li class="nav-item">
+                      <a class="nav-link"  href="{{ route('order') }}">@lang('modules.menuuser.cakeorder')</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ route('news') }}"  id="menu_news">@lang('modules.menuuser.news')</a>
+                    </li>
+                    {{-- <li class="nav-item">
+                      <a class="nav-link" href="#" id="menu_schedules">@lang('modules.menuuser.schedules')</a>
+                    </li> --}}
+                    <li class="nav-item">
+                      <a class="nav-link"  href="{{ route('free-tutorial') }}" id="menu_free_tutorials">@lang('modules.menuuser.freetutorials')</a>
                     </li>
                     <li class="nav-item" >
-                      <a class="nav-link" href="handsonclass.php">@lang('modules.menuuser.handsonclass')</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link"  href="order.php">@lang('modules.menuuser.cakeorder')</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="news.php"  id="menu_news">@lang('modules.menuuser.news')</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="schedules.php" id="menu_schedules">@lang('modules.menuuser.schedules')</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link"  href="freetutorials.php" id="menu_free_tutorials">@lang('modules.menuuser.freetutorials')</a>
-                    </li>
+                        <a class="nav-link" href="{{ route('about') }}">Giới thiệu</a>
+                      </li>
                     <li class="nav-item"  >
-                      <a class="nav-link"  href="contacts.php" id="menu_contacts">@lang('modules.menuuser.contacts')</a>
+                      <a class="nav-link"  href="{{ route('contact') }}" id="menu_contacts">@lang('modules.menuuser.contacts')</a>
                     </li>
                 </ul>
               </div>
           </nav>
           </div>
           <div class="col-lg-4 col-4 logo_768">
-            <a href="index.php"><img src="{{ asset('img/MITO SWEETS.png') }}" alt="Logo_main" ></a>
+            <a href="{{ route('index') }}"><img src="{{ asset('img/MITO SWEETS.png') }}" alt="Logo_main" ></a>
           </div>
           <div class="col-lg-4 col-4 logo_right_header">
                <a href="#" class="text-black-50 nostyle">
                    <img src="{{ asset('img/SEARCH.png') }}" width="20px" height="20px">
                 </a>
                &ensp;
-                <a href="shoppingcart.php" class=" text-black-50 nostyle">
+                <a href="{{ route('cart-index') }}" class=" text-black-50 nostyle">
                     <img src="{{ asset('img/CART.png') }}" width="20px" height="20px">
                 </a>
                &ensp;
 
-               <a href="profile.php" class=" text-black-50 nostyle">
+               <a href="{{ route('signin') }}" class=" text-black-50 nostyle">
                     <img src="{{ asset('img/USER.png') }}" width="20px" height="20px">
                </a>
           </div>

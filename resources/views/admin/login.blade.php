@@ -26,17 +26,29 @@
 
 <body class="bg-login">
     <section class="container">
-        <form action="" class="form-login">
+        <form action="/login" method="POST" class="form-login">
+            @csrf
+
+            @if(session('status'))
+                <div class="alert alert-danger alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>{{ session('status') }}
+                </div>
+            @endif
+            @if(session('success'))
+                <div class="alert alert-info alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>{{ session('success') }}
+                </div>
+            @endif
             <h2>@lang('modules.dashboard.dashboard-title')</h2>
             <h5>@lang('modules.dashboard.login')</h5>
-            <input type="text" class="form-control" placeholder="Tên đăng nhập" >
+            <input type="text" class="form-control" name="name" placeholder="Tên đăng nhập" >
             <div class="profile_eye" >
-                <input id="pass" type="password" name="addpass" class="form-control" placeholder="Mật khẩu" minlength="6" required>
+                <input id="pass" type="password" name="password" class="form-control" placeholder="Mật khẩu" minlength="6" >
                 <span toggle="#pass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
             </div>
 
-            <a href="#" class="signin_signin">Đăng nhập</a>
-            <a href="#">Quên mật khẩu?</a>
+            <button type="submit" class="signin_signin">Đăng nhập</button>
+            <a href="/forgot">Quên mật khẩu?</a>
         </form>
 
         <script>

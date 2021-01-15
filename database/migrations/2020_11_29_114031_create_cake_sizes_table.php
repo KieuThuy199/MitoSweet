@@ -16,6 +16,7 @@ class CreateCakeSizesTable extends Migration
         Schema::create('cake_sizes', function (Blueprint $table) {
             $table->id();
             $table->integer('title')->unique();
+            $table->integer('heso')->default(1);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

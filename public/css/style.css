@@ -318,7 +318,7 @@ header{
 }
 .scroll-top {
     position: fixed;
-    bottom: 20px;
+    bottom: 85px;
     right: 0;
     z-index: 99;
     border: 0;
@@ -832,7 +832,7 @@ footer h5{
     text-align: center;
 }
 .signin_or{
-    padding: 30px 0 30px 0;
+    padding: 25px 0 0;
 }
 .signin_text_or{
     font-size: 18px;
@@ -1133,10 +1133,11 @@ input[type="password"].ca_password::-webkit-input-placeholder{
     padding: 4% 0;
 }
 .title-related{
-    font-size: 27px;
+    font-size: 1.55rem;
     font-family: 'font-medium';
     color: #2e1503;
     padding: 0px;
+    text-transform: capitalize;
 }
 .strong{
     border-bottom: 1px solid #2e1503;
@@ -1965,7 +1966,7 @@ input[type="text"].checkout_nameoc input,.checkout_cartn input,.checkout_expires
 .checkout_checkbox h6{
     font-style: 17px;
 }
-.checkout_button_save a{
+.checkout_button_save button{
     display: block;
     width: 100%;
     padding: 10px 0;
@@ -2136,6 +2137,15 @@ input[type="text"].checkout_nameoc input,.checkout_cartn input,.checkout_expires
     color: #bf5000;
     font-weight: bolder;
     text-align: right;
+}
+.edit a{
+    color: #bf5000;
+    font-weight: bolder;
+}
+.edit a:hover{
+    color: #bf5000;
+    font-weight: bolder;
+    text-decoration: none;
 }
 .account{
     padding: 4% 0 4% 4%;
@@ -2434,10 +2444,9 @@ button.btn.icon-down:before{
    padding: 55px 0;
 }
 
-.class_subscription_box h5{
+.class_subscription_box h3{
     position: absolute;
     display: block;
-    font-size: 20px;
     padding-bottom: 5px;
     left: 35px;
     top: 18px;
@@ -2484,7 +2493,7 @@ button.btn.icon-down:before{
        position: relative;
        padding: 15px 0;
     }
-    .class_subscription_box h5{
+    .class_subscription_box h3{
         width: 300px;
         position: relative;
         display: block;
@@ -2546,9 +2555,17 @@ button.btn.icon-down:before{
     height: 600px;
     transition: 0.6s ease-in-out;
 }
+#class_video iframe{
+    width: 100% !important;
+    height: 100% !important;
+}
 @media(max-width: 700px){
     #class_video{
         height: 300px;
+    }
+    #class_video iframe{
+        width: 100% !important;
+        height: 100% !important;
     }
 }
 .class_icon_menu{
@@ -2594,7 +2611,7 @@ button.btn.icon-down:before{
     text-decoration: none;
 }
 .class_icon h5{
-    font-size: 13px;
+    /* font-size: 13px; */
     display: inline-block;
     margin-left: 2px;
     color: #bf5000;
@@ -2703,7 +2720,8 @@ button.btn.icon-down:before{
     top: 0;
     width: 450px;
     overflow-y: scroll;
-    height: 653px;
+    /* height: 653px; */
+    height: 100%;
     position: absolute;
     transform: translateX(-450px);
     transition: 0.6s ease-in-out;

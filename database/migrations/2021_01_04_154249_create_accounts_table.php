@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOfflineCoursesTable extends Migration
+class CreateAccountsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateOfflineCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('offline_courses', function (Blueprint $table) {
+        Schema::create('accounts', function (Blueprint $table) {
             $table->id();
             $table->string('img');
-            $table->string('title');
-            $table->string('summary');
-            $table->longText('detail');
-            $table->foreignId('level')->constrained('course_levels');
-            $table->integer('price');
-            $table->integer('promo_price')->nullable();
-            $table->integer('lesson');
-            $table->string('trailer')->nullable();
+            $table->string('name');
+            $table->string('password');
+            $table->string('fullname');
+            $table->string('email');
+            $table->string('phone',10)->nullable();
+            $table->integer('status')->default('1');
+            $table->foreignId('type')->constrained('account_types');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
@@ -36,6 +35,6 @@ class CreateOfflineCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('offline_courses');
+        Schema::dropIfExists('accounts');
     }
 }

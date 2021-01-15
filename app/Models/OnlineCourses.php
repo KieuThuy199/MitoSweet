@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class OnlineCourses extends Model
 {
     protected $fillable = [
-        'title', 'img', 'summary', 'detail', 'level', 'price', 'promo_price', 'lesson', 'trailer', 'video',
+        'course_id','title', 'img', 'summary', 'detail', 'level', 'price', 'promo_price', 'lesson', 'trailer', 'video',
     ];
 }

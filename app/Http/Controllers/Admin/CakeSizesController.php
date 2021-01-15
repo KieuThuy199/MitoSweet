@@ -20,6 +20,7 @@ class CakeSizesController extends Controller
             try{
                 $sizes = new CakeSizes();
                 $sizes->title   = $request->title;
+                $sizes->heso    = $request->heso;
                 $sizes->save();
                 DB::commit();
                 return redirect()->back()->with('status', 'Thêm kích thước thành công!');
@@ -36,6 +37,7 @@ class CakeSizesController extends Controller
         $sizes = CakeSizes::find($id);
         if($request->isMethod('post')){
             $sizes->title   = $request->title;
+            $sizes->heso    = $request->heso;
             $sizes->save();
             return redirect()->back()->with('status', 'Sửa kích thước thành công!');
         }

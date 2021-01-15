@@ -26,33 +26,21 @@ $("#search").on("keyup", function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
 });
-// var table = $('#search-body');
-// $("#search").keyup(function()
-// {
-//     var keyword= $(this).val().toLowerCase();
-//     $("tr",table).each(function()
-//     {
-//         if($(this).text().toLowerCase().search(keyword) > -1)
-//             $(this).fadeIn();
-//         else
-//             $(this).fadeOut();
-//     });
-// });
 
 // thêm video
+/* <input class="form-control" name="name-video" placeholder="Tên video..."></input>
+<a class="deletevideo" type="button" style="color:2e1503; cursor: pointer;">Xóa</a>*/
 $('.add-video').click(function(){
     let a ='';
-    a += `  <div class="add-video">
-                <input class="form-control" name="name-video" placeholder="Tên video...">
-                <textarea class="form-control" name="video" placeholder="Đường link video..."></textarea>
-                <a class="deletevideo" style="color:2e1503; cursor: pointer;" onclick="remove()">Xóa</a>
+    a += `  <div class="video">
+                <textarea class="form-control" name="video[]" placeholder="Đường link video..."></textarea>
+                <hr>
             </div>`;
     $('.form-add-video').append(a);
+    // $('.deletevideo').click(function(){
+    //     $('.video').remove();
+    // })
 })
-
-// function remove(){
-//     $('.add-video').remove();
-// }
 
 // show xóa nhiều trường
 $('.btn-del-show').click(function(){

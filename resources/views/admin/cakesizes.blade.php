@@ -41,6 +41,8 @@
                         @csrf
                         <label for="" class="required control-label">@lang('modules.dashboard.menu.cake.type')</label>
                         <input class="form-control" type="number" name="title" min="10" max="30" placeholder="Kích thước từ 10 -> 30" required>
+                        <label for="" class="control-label">Hệ số giá tiền</label>
+                        <input class="form-control" type="number" name="heso" min="1" max="5">
                         <button class="btn-change">@lang('modules.changeinfor.confirm')</button>
                         <button class="btn-back" data-dismiss="modal">@lang('modules.back')</button>
                     </form>
@@ -115,7 +117,8 @@
                                     @csrf
                                     <label for="" class="required control-label">@lang('modules.levels.name')</label>
                                     <input class="form-control" value="{{$sizes->title}}" name="title" required>
-
+                                    <label for="" class="control-label">Hệ số giá tiền</label>
+                                    <input class="form-control" type="number" name="heso" min="1" max="5" value="{{$sizes->heso}}">
                                     <button class="btn-change">@lang('modules.changeinfor.confirm')</button>
                                     <button class="btn-back" data-dismiss="modal">@lang('modules.back')</button>
                                 </form>

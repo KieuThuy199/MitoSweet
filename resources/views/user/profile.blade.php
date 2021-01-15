@@ -5,12 +5,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 profile-title" id="profile-title">
-                    <h4 style="text-transform: uppercase;">account setting</h4>
-                    <h1 class="profile-header" id="pi-title">Personal Information</h1>
-                    <h1 class="content_none profile-header" id="ms-title">Manage Subscription</h1>
-                    <h1 class="content_none profile-header" id="cp-title">Contact Preferences</h1>
-                    <h1 class="content_none profile-header" id="oh-title">Order History</h1>
-                    <h1 class="content_none profile-header" id="coupon-title">Coupon & Perk</h1>
+                    <h4 style="text-transform: uppercase;">Cài đặt tài khoản</h4>
+                    <h1 class="profile-header" id="pi-title">Thông tin cá nhân</h1>
+                    <h1 class="content_none profile-header" id="ms-title">Khóa học trực tuyến</h1>
+                    {{-- <h1 class="content_none profile-header" id="cp-title">Contact Preferences</h1>
+                    <h1 class="content_none profile-header" id="oh-title">Order History</h1> --}}
+                    <h1 class="content_none profile-header" id="coupon-title">Phiếu giảm giá</h1>
                     <h5 class="account-name">vivamus21288993</h5>
                 </div>
 
@@ -18,24 +18,24 @@
                     <div class="col-lg-12" style="background-color:#CEF0CD; margin-bottom: 30px;">
                         <ul class="profile-list list-group" id="nav-profile" style="cursor: pointer;">
                             <li class="profile-item list-item active2" onclick="onclick_navbar(this.id);" id="personal" style="margin-top: 20px">
-                                <a class="profile-link personal">personal information</a>
+                                <a class="profile-link personal">Thông tin cá nhân</a>
                             </li>
                             <li class="profile-item list-item" onclick="onclick_navbar(this.id);" id="manage">
-                                <a class="profile-link manage" onclick="onclick_navbar()">manage subscription</a>
+                                <a class="profile-link manage" onclick="onclick_navbar()">Khóa học trực tuyến</a>
                             </li>
-                            <li class="profile-item list-item" onclick="onclick_navbar(this.id);" id="contact">
+                            {{-- <li class="profile-item list-item" onclick="onclick_navbar(this.id);" id="contact">
                                 <a class="profile-link contact" onclick="onclick_navbar()">contact preferences</a>
                             </li>
                             <li class="profile-item list-item" onclick="onclick_navbar(this.id);" id="history">
                                 <a class="profile-link history"  onclick="onclick_navbar()">order history</a>
-                            </li>
+                            </li> --}}
                             <li class="profile-item list-item" onclick="onclick_navbar(this.id);" id="coupon" style="margin-bottom: 20px">
-                                <a class="profile-link coupon" onclick="onclick_navbar()">coupon & perk</a>
+                                <a class="profile-link coupon" onclick="onclick_navbar()">phiếu giảm giá</a>
                             </li>
                         </ul>
                     </div>
 
-                    <button class="col-lg-12 btn btn-outline-success" id="btn-help" type="button">account setting help</button>
+                    {{-- <button class="col-lg-12 btn btn-outline-success" id="btn-help" type="button">account setting help</button> --}}
                 </div>
 
                 <script>
@@ -73,14 +73,14 @@
                             document.getElementById("manage_content").classList.remove('content_none');
                             document.getElementById("ms-title").classList.remove('content_none');
                         }
-                        if( name_id == "contact"){
-                            document.getElementById("contact_content").classList.remove('content_none');
-                            document.getElementById("cp-title").classList.remove('content_none');
-                        }
-                        if( name_id == "history"){
-                            document.getElementById("history_content").classList.remove('content_none');
-                            document.getElementById("oh-title").classList.remove('content_none');
-                        }
+                        // if( name_id == "contact"){
+                        //     document.getElementById("contact_content").classList.remove('content_none');
+                        //     document.getElementById("cp-title").classList.remove('content_none');
+                        // }
+                        // if( name_id == "history"){
+                        //     document.getElementById("history_content").classList.remove('content_none');
+                        //     document.getElementById("oh-title").classList.remove('content_none');
+                        // }
                         if( name_id == "coupon"){
                             document.getElementById("coupon_content").classList.remove('content_none');
                             document.getElementById("coupon-title").classList.remove('content_none');
@@ -94,11 +94,13 @@
                         <div class="main-profile">
                             <div class="row">
                                 <div class="col-lg-8 col-6">
-                                    <h5>Profile</h5>
+                                    <h5>Thông tin</h5>
                                 </div>
                                 <div class="col-lg-4 col-6 edit">
                                     <i class="far fa-edit"></i>
-                                    <span>Edit</span>
+                                    <a data-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse">
+                                        Chỉnh sửa
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -109,8 +111,18 @@
                                     <img src="img/avatar.png" width="100%">
                                 </div>
                                 <div class="col-lg-9 col-md-8 col-8 infor">
-                                    <h5>Display Name</h5>
+                                    <h5>Tên hiển thị</h5>
                                     <h4>vivamus21288993</h4>
+                                </div>
+                                <div class="col-lg-12 mt-3">
+                                    <div class="collapse" id="collapse">
+                                        <form action="">
+                                            <label for="">Tên hiển thị mới</label>
+                                            <input type="text" name="name" class="form-control" placeholder="Tên hiển thị mới...">
+                                            <button class="btn btn-outline-success mt-1" type="submit">Lưu</button>
+                                            <button class="btn btn-outline-danger mt-1" type="submit">Hủy</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -118,7 +130,7 @@
                         <div class="add">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <h5>Add Email & Password</h5>
+                                    <h5>Email & Mật khẩu</h5>
                                 </div>
                             </div>
                         </div>
@@ -126,12 +138,12 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <form class="form-send">
-                                    <input type="email" name="addemail" class="form-control" placeholder="enter your email..." required>
+                                    <input type="email" name="addemail" class="form-control" placeholder="Nhập email của bạn..." required>
                                     <div class="profile_eye" >
-                                        <input id="pass" type="password" name="addpass" class="form-control" placeholder="create password (min 6 char)..." minlength="6" required>
+                                        <input id="pass" type="password" name="addpass" class="form-control" placeholder="Tạo mật khẩu (ít nhất 6 ký tự)..." minlength="6" required>
                                         <span toggle="#pass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                 </div>
-                                    <button id="btn-add" class="btn btn-outline-success" type="button">add email & password</button>
+                                    <button id="btn-add" class="btn btn-outline-success" type="button">Thêm email & mật khẩu</button>
                                 </form>
                                 <script>
                                     $(".toggle-password").click(function() {
@@ -148,16 +160,13 @@
                             </div>
 
                             <div class="col-lg-6 why-question">
-                                <h5>Why add an email & password? </h5>
+                                <h5>Tại sao phải thêm email và mật khẩu? </h5>
                                 <ul>
                                     <li>
-                                        Login with your email or Facebook
+                                        Đăng nhập bằng email
                                     </li>
                                     <li>
-                                        Get alerts when someone replies to your questions or comments.
-                                    </li>
-                                    <li>
-                                        Receive news & coupons in your inbox!
+                                        Nhận tin tức và phiếu giảm giá trong hộp thư đến của bạn!
                                     </li>
                                 </ul>
                             </div>
@@ -169,11 +178,11 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <p>5/31/2020 is the last day Bluprint will be taking orders</p>
-                                    <button type="button" onclick="window.location.href='class.php'" class="learn-more">learn more</button>
+                                    <button type="button" onclick="window.location.href='class.php'" class="learn-more">Bắt đầu học</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="add">
+                        {{-- <div class="add">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <h5>Payment</h5>
@@ -186,10 +195,10 @@
                                     You don't have any saved payment methods.
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </section>
 
-                    <section class="profile_content_button content_none contact_content" id="contact_content">
+                    {{-- <section class="profile_content_button content_none contact_content" id="contact_content">
                         <div class="col-lg-12 main-profile" style="padding-left: 0;">
                             <div class="row">
                                 <div class="row collapsed" data-toggle="collapse" data-target="#emailpreferences" style="padding-left:15px;">
@@ -305,7 +314,7 @@
                             <span class="mx-auto d-block">No orders placed yet</span>
                             <p class="text-center">If you think this may be a mistake, please contact <a href="#" style="font-weight: 600;text-decoration: none;">customer support</a>.</p>
                         </div>
-                    </section>
+                    </section> --}}
 
                     <section class="profile_content_button content_none profile coupon_content" id="coupon_content">
                         <div class="coupon-title">

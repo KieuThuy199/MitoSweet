@@ -43,11 +43,12 @@
             </div>
             <div class="col-lg-2 col-md-2 col-sm-3 col-4" style="text-align: right">
                 <button class="btn dropdown dropdown-toggle" data-toggle="dropdown" id="adminbtn">
-                    <span>Admin</span>
+                    {{-- <span class="text-capitalize">Admin</span> --}}
+                    <span class="text-capitalize">{{$data_user->name}}</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="adminbtn">
-                    <a class="dropdown-item" href="#">@lang('modules.admin.profile')</a>
-                    <a class="dropdown-item" href="#">@lang('modules.admin.logout')</a>
+                    <a class="dropdown-item" href="/">@lang('modules.admin.profile')</a>
+                    <a class="dropdown-item" href="/logout">@lang('modules.admin.logout')</a>
                 </div>
             </div>
         </div>

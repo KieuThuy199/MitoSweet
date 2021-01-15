@@ -3,21 +3,18 @@
 
     <section class="shopping-cart">
         <div class="container">
-            <div class="col-lg-12 box_member">
-            <h5>Get 15% off day PLUST an extra 15% off all orders when you become a member!</h5>
-            </div>
             <div class="row shopping-content">
                 <div class="col-lg-12">
                     <div class="row">
-                        <h1>Shopping Cart</h1>&emsp;
-                        <h5 style="line-height: 3;">(0 classes)</h5>
+                        <h1>Giỏ hàng</h1>&emsp;
+                        <h5 style="line-height: 3;">(0 sản phẩm)</h5>
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-7">
                     <div class="shopping-empty">
-                        <img class="mx-auto d-block" src="img/shoppingcart.png" width="15%">
-                        <span class="mx-auto d-block">Your Cart is Empty</span>
-                        <button class="mx-auto d-block btn-go" type="button">go shop</button>
+                        <img class="mx-auto d-block" src="{{ asset('img/shoppingcart.png') }}" width="15%">
+                        <span class="mx-auto d-block">Giỏ hàng trống</span>
+                        <button class="mx-auto d-block btn-go" type="button" onclick="window.location.href='{{ route('index') }}'">Đến cửa hàng</button>
                     </div>
                 </div>
 

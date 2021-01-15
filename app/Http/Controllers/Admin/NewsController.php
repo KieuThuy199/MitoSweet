@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\News;
+use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -32,6 +33,7 @@ class NewsController extends Controller
             }
             catch (\Exception $exception){
                 DB::rollBack();
+                // return $exception->getMessage();
                 return redirect('news')->with('fail', 'Không thêm được!');
             }
         }

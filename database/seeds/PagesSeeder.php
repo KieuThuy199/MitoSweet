@@ -22,10 +22,6 @@ class PagesSeeder extends Seeder
                 'title' => 'Khóa học trực tuyến',
             ],
             [
-                'nick'  => 'thuchanh',
-                'title' => 'Khóa học thực hành',
-            ],
-            [
                 'nick'  => 'datbanh',
                 'title' => 'Đặt bánh',
             ],

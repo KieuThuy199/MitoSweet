@@ -191,7 +191,6 @@
     <script type="text/javascript" src="..\js\upload.js"></script>
     <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
     <script>
-        var route_prefix = "laravel-filemanager";
-        $('a#btn-edit-img').filemanager('image', {prefix: route_prefix});
+        $('a#btn-edit-img').filemanager('image');
     </script>
 @endpush
