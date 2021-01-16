@@ -219,7 +219,7 @@ Route::prefix('public')->namespace('User')->group(function () {
 
         //     dd("Email is Sent.");
         // });
-        Route::get('sign-in/login', ['as' => 'login', 'uses' =>'SigninController@redirect']);
+        Route::get('sign-in/login/{provider}', ['as' => 'login', 'uses' =>'SigninController@redirect']);
         Route::get('sign-in/{provider}/callback','SigninController@callback');
 });
 Route::get('view', function () {

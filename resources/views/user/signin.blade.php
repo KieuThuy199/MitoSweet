@@ -9,10 +9,10 @@
                 <div class="col-lg-12 mt-4">
                     <div class="row">
                         <div class="col-lg-6 box_button_signin">
-                            <a href="#" class="signin_button_facebook"><img src="{{ asset('img/icon_facebook.png') }}" alt="icon_facebook"style="float: left; width:8px;">Facebook</a>
+                            <a href="{{ route('login', ['provider' => 'facebook']) }}" class="signin_button_facebook"><img src="{{ asset('img/icon_facebook.png') }}" alt="icon_facebook"style="float: left; width:8px;">Facebook</a>
                         </div>
                         <div class="col-lg-6 box_button_signin">
-                            <a href="{{ route('login') }}" class="signin_button_Google"><img src="{{ asset('img/icon_google.png') }}" alt="icon_google" style="float: left; width:15px;">Google</a>
+                            <a href="{{ route('login', ['provider' => 'google']) }}" class="signin_button_Google"><img src="{{ asset('img/icon_google.png') }}" alt="icon_google" style="float: left; width:15px;">Google</a>
                         </div>
                     </div>
                 </div>

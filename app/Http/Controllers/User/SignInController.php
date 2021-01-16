@@ -24,9 +24,10 @@ class SignInController extends Controller
         return view('user.forgotpassword');
     }
 
-    public function redirect()
+    public function redirect($provider)
     {
-        return Socialite::driver('google')->redirect();
+        // dd($provider);
+        return Socialite::driver($provider)->redirect();
     }
 
     public function callback($provider)
