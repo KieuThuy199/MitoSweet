@@ -239,9 +239,7 @@
             </div>
         </div>
         {{-- end edit --}}
-        </tr>
     @endforeach
-
 @endsection
 
 @push('scripts')
